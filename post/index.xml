@@ -6,18 +6,309 @@
     <description>Recent content in Posts on JingYi-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Jun 2016 23:30:25 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jul 2016 00:24:46 +0800</lastBuildDate>
     <atom:link href="http://jingyihiter.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>about</title>
-      <link>http://jingyihiter.github.io/2016/06/30/about</link>
+      <title>Http代理服务器</title>
+      <link>http://jingyihiter.github.io/2016/07/01/http%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8</link>
+      <pubDate>Fri, 01 Jul 2016 00:24:46 +0800</pubDate>
+      
+      <guid>http://jingyihiter.github.io/2016/07/01/http%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8</guid>
+      <description>
+
+&lt;h1 id=&#34;一-计算机网络之http代理服务器:7e45868971a7bcd8ef176d27cff9b534&#34;&gt;一、计算机网络之HTTP代理服务器&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jingyihiter/http_proxy&#34;&gt;源码下载地址&lt;/a&gt;&lt;br&gt;
+&lt;br&gt;
+实验的内容：&lt;br&gt;
+1.实现基本的HTTP代理服务器,可以在指定端口接收客户端http的请求并且根据其中个URL地址访问该地址所指向的HTTP服务器，接收服务器的响应报文，并将响应报文转发给对应的客户进行浏览。&lt;br&gt;
+2.设计并实现一个支持cache功能的HTTP代理服务器，要求能缓存原服务器响应的对象，并能够通过修改请求报文（添加 if-modified-since头行），向原服务器确认缓存对象是否是最新版本&lt;br&gt;
+3.扩展 HTTP 代理服务器，支持如下功能：&lt;br&gt;
+  a、网站过滤：允许/不允许访问某些网站&lt;br&gt;
+  b、用户过滤：支持/不支持某些用户访问外部网站&lt;br&gt;
+  c、网站引导：将用户对某个网站的访问引导至一个模拟网站（钓鱼）&lt;br&gt;
+&lt;br&gt;
+代理服务器，俗称 “翻墙软件” ，允许一个网络终端（一般为客户端）通过这个服务与另一个网络终端（一般为服务器）进行非直接的连接。如图所示，为普通 Web 应用通信方式与采用代理服务器的通信方式的对比。&lt;br&gt;
+&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/images/webhttp.png&#34; alt=&#34;&#34; /&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;实现的是多用户代理服务器，实现线程的并行执行。 首先，代理服务器创建 HTTP 代理服务的 TCP 主套接字，通过该主套接字监听等待客户端的连接请求。当客户端连接之后，创建一个子线程，由子线程执行上述一对一的代理过程，服务结束之后子线程终止。与此同时，主线程继续接受下一个客户的代理服务。&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;实验环境配置-br:7e45868971a7bcd8ef176d27cff9b534&#34;&gt;实验环境配置&lt;br&gt;&lt;/h2&gt;
+
+&lt;p&gt;打开IE（windows）-&amp;gt; 工具 -&amp;gt; Internet选项 -&amp;gt; 连接 -&amp;gt; 局域网设置 -&amp;gt; 代理服务器 &lt;br&gt;
+如下设置地址和端口号（端口号和程序中保持一致即可（最好使用较大的，低端口一般被占用））&lt;br&gt;
+&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/images/port.png&#34; alt=&#34;&#34; /&gt;&lt;br&gt;
+&lt;br&gt;
+&lt;strong&gt;基本的HTTP代理服务器，实现简单，不用处理直接转发接收到目的服务器的报文即可。因此不作介绍，主要讲解实现的扩展功能&lt;/strong&gt;。&lt;br&gt;
+&lt;br&gt;
+&lt;strong&gt;1网站过滤的实现&lt;/strong&gt;&lt;br&gt;
+基本思想：通过解析客户端请求的buffer，获取请求的URL，然后设置关键字，再次使用c++中的一个函数&lt;strong&gt;strstr&lt;/strong&gt;，判断关键字是否在其子串中&lt;br&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;bool ForbiddenToConnect(char *httpheader)
+{
+    char * forbiddernUrl = &amp;quot;.edu.cn&amp;quot;; //屏蔽的含有关键字的网址
+    if (strstr(httpheader, forbiddernUrl)!=NULL) //是否含有屏蔽的关键字
+    {
+        return false;
+    }
+    else return true;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+&lt;strong&gt;2用户过滤的实现&lt;/strong&gt;&lt;br&gt;
+基本思想：通过客户端请求，获取请求用户的IP，然后在程序运行时，设置一个IP禁止表，在IP禁止表中存入一些IP地址，在请求之后就去查询是否在IP禁止表中，如果是，则关闭socket即可，等待下一次的请求。&lt;br&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;char client_IP[16];
+//设置禁用IP,可以在此添加更多
+memcpy(ForbiddenIP[IPnum++], &amp;quot;127.0.0.1&amp;quot;, 16);
+//设置访问哪些网站会被重定向到钓鱼网站
+memcpy(fishUrl[fishUrlnum++], &amp;quot;http://www.asus.com.cn/&amp;quot;,23);
+memcpy(fishUrl[fishUrlnum++],&amp;quot;http://pku.edu.cn/&amp;quot;,18);
+while (true) {
+    int ff;
+    ff = sizeof(acceptAddr);
+    acceptSocket = accept(ProxyServer, (SOCKADDR*)&amp;amp;acceptAddr,&amp;amp;(ff));
+    printf(&amp;quot;获取用户IP地址：%s\n&amp;quot;,inet_ntoa(acceptAddr.sin_addr));
+    memcpy(client_IP, inet_ntoa(acceptAddr.sin_addr),16);//用户IP保存
+    //禁用用户IP访问
+    if (UserIsForbidden(client_IP))
+    {
+        printf(&amp;quot;IP被禁用\n&amp;quot;);
+        closesocket(acceptSocket);
+        //system(&amp;quot;pause&amp;quot;);
+        //break;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+&lt;strong&gt;重点是&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;acceptSocket = accept(ProxyServer, (SOCKADDR*)&amp;amp;acceptAddr,&amp;amp;(ff));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+获取请求IP的方法。如果最后一个参数设置的是0，则返回的IP一直是204.204.204.204，显然不是请求的IP地址，因此需要作上述处理，先获取acceptAddr的大小，然后其地址作为accept函数的地址&lt;br&gt;
+&lt;br&gt;
+&lt;strong&gt;3钓鱼网站的实现（钓鱼网站）&lt;/strong&gt;&lt;br&gt;
+基本思想：设置一个钓鱼网站的URL表，如果请求的URL在此URL表中，则丢弃其的请求报文，转成302报文发送，在302报文中定位到钓鱼网站的网址，从而实现访问请求网站自动重定向到钓鱼网站&lt;br&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//网站引导  访问pku.edu.cn  asus.com 重定向到 today.hit.edu.cn
+if (GotoFalseWebsite(httpHeader-&amp;gt;url))
+{   //302报文 对客户端的请求直接截断重定向到其他页面
+        //数据内容主要的就两条：
+        //&amp;quot;HTTP/1.1 302 Moved Temporarily&amp;quot;
+        //&amp;quot;Location: 路径&amp;quot;
+    //生成302报文，直接发送给客户端
+    char* pr;  
+    int fishing_len = strlen(&amp;quot;HTTP/1.1 302 Moved Temporarily\r\n&amp;quot;); //302报文
+    memcpy(FishBuffer, &amp;quot;HTTP/1.1 302 Moved Temporarily\r\n&amp;quot;, fishing_len);
+    pr = FishBuffer + fishing_len;
+    //重定向到今日哈工大
+    fishing_len = strlen(&amp;quot;Location: http://today.hit.edu.cn/\r\n\r\n&amp;quot;);  //定向的网址
+    memcpy(pr, &amp;quot;Location: http://today.hit.edu.cn/\r\n\r\n&amp;quot;, fishing_len);
+    //将302报文返回给客户端
+    ret = send(((ProxyParam*)lpParameter)-&amp;gt;clientSocket, FishBuffer, sizeof(FishBuffer), 0);
+    goto error;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+&lt;strong&gt;4cache的实现&lt;/strong&gt;&lt;br&gt;
+基本思想：cache作为代理服务器的缓存管理。首先，客户端请求报文，需要在cache中查询，如果命中，则进行访问目标服务器，缓存是否过期，未过期则直接将缓存的报文转发给客户端,过期则将目标服务器返回的报文进行更新cache；未命中，则直接请求目标服务器，将目标服务器的返回报文更新到cache中，并发送给客户端。&lt;br&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//cache 实现
+    if (Have_cache) //请求有缓存
+    {
+        char cached_buffer[MAXSIZE];//缓存buffer
+        ZeroMemory(cached_buffer, MAXSIZE);
+        memcpy(cached_buffer, Buffer, recvSize);
+
+        //构造缓存的报文头
+        char* pr = cached_buffer + recvSize;
+        memcpy(pr, &amp;quot;If-modified-since: &amp;quot;, 19);
+        pr += 19;
+        int lenth = strlen(Cache[last_cache].last_modified);
+        memcpy(pr, Cache[last_cache].last_modified, lenth);
+        pr += lenth;
+        //将客户端发送的 HTTP 数据报文直接转发给目标服务器
+        ret = send(((ProxyParam *)lpParameter)-&amp;gt;serverSocket, cached_buffer, strlen(cached_buffer) + 1, 0);
+        //等待目标服务器返回数据
+        recvSize = recv(((ProxyParam *)lpParameter)-&amp;gt;serverSocket, cached_buffer, MAXSIZE, 0);
+        if (recvSize &amp;lt;= 0) {
+            goto error;
+        }
+
+        //解析包含缓存信息的HTTP报文头
+        CacheBuffer = new char[recvSize + 1];
+        ZeroMemory(CacheBuffer, recvSize + 1);
+        memcpy(CacheBuffer, cached_buffer, recvSize);
+        char last_status[4];//用于记录主机返回的状态字
+        char last_modified[30];//用于记录记住返回的页面修改的时间
+        ParseCache(CacheBuffer, last_status, last_modified);
+        delete CacheBuffer;
+
+        //分析cache的状态字
+        if (strcmp(last_status, &amp;quot;304&amp;quot;) == 0) {//没有被修改
+            printf(&amp;quot;页面没有修改过,缓存的url为:%s\n&amp;quot;, Cache[last_cache].url);
+            //将缓存的数据直接转发给客户端
+            ret = send(((ProxyParam*)lpParameter)-&amp;gt;clientSocket, Cache[last_cache].buffer, sizeof(Cache[last_cache].buffer), 0);
+            if (ret != SOCKET_ERROR)
+            {
+                printf(&amp;quot;来自缓存++++++++++++++\n&amp;quot;);
+            }
+        }
+        else if (strcmp(last_status, &amp;quot;200&amp;quot;) == 0) {//已经修改了
+            //修改缓存中的内容
+            printf(&amp;quot;页面已经被修改过,缓存的url为:%s\n&amp;quot;, Cache[last_cache].url);
+            memcpy(Cache[last_cache].buffer, cached_buffer, strlen(cached_buffer));//新的buffer 存在缓存中
+            memcpy(Cache[last_cache].last_modified, last_modified, strlen(last_modified)); //修改时间存入缓存
+
+            //将目标服务器返回的数据直接转发给客户端
+            ret = send(((ProxyParam*)lpParameter)-&amp;gt;clientSocket, cached_buffer, sizeof(cached_buffer), 0);
+            if (ret != SOCKET_ERROR)
+            {
+                printf(&amp;quot;来自修改过的缓存-----------\n&amp;quot;);
+            }
+        }
+    }
+    else //没有缓存过这个页面
+    {
+        //将客户端发送的 HTTP 数据报文直接转发给目标服务器
+        ret = send(((ProxyParam *)lpParameter)-&amp;gt;serverSocket, Buffer, strlen(Buffer) + 1, 0);
+        if (ret != SOCKET_ERROR)
+        {
+            printf(&amp;quot;成功发送给目标服务器的报文buffer \n \n&amp;quot;);
+        }
+        //等待目标服务器返回数据
+        recvSize = recv(((ProxyParam *)lpParameter)-&amp;gt;serverSocket, Buffer, MAXSIZE, 0);
+        if (recvSize == SOCKET_ERROR)
+        {
+            printf(&amp;quot;目标服务器未返回数据\n&amp;quot;);
+            goto error;
+        }
+        //将目标服务器返回的数据直接转发给客户端
+        ret = send(((ProxyParam*)lpParameter)-&amp;gt;clientSocket, Buffer, sizeof(Buffer), 0);
+        if (ret != SOCKET_ERROR)
+        {
+            printf(&amp;quot;来自服务器************\n成功发送给客户端的报文(目标服务器返回的)buffer ret = %d \n&amp;quot;, ret);
+        }
+    }
+    //错误处理
+error:
+    printf(&amp;quot;关闭套接字\n&amp;quot;);
+    Sleep(200);
+    closesocket(((ProxyParam*)lpParameter)-&amp;gt;clientSocket);
+    closesocket(((ProxyParam*)lpParameter)-&amp;gt;serverSocket);
+    delete lpParameter;
+    _endthreadex(0);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+cache的报文头解析&lt;br&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//*************************
+//Method: ParseHttpHead0
+//FullName: ParseHttpHead0
+//Access: public
+//Returns: void
+//Qualifier: 解析 TCP 报文中的 HTTP 头部
+//Parameter: char *buffer
+//Parameter: HttpHeader *httpHeader
+//*************************
+
+int ParseHttpHead0(char *buffer, HttpHeader *httpHeader) {
+    int flag = 0;//用于表示Cache是否命中，命中为1，不命中为0
+    char *p;
+    char *ptr;
+    const char *delim = &amp;quot;\r\n&amp;quot;;//回车换行符                           
+    p = strtok_s(buffer, delim, &amp;amp;ptr);
+    if (p[0] == &#39;G&#39;) {  //GET方式
+        memcpy(httpHeader-&amp;gt;method, &amp;quot;GET&amp;quot;, 3);
+        memcpy(httpHeader-&amp;gt;url, &amp;amp;p[4], strlen(p) - 13);
+        printf(&amp;quot;url：%s\n&amp;quot;, httpHeader-&amp;gt;url);//url                                       
+        for (int i = 0; i &amp;lt; 1024; i++) {//搜索cache，看当前访问的url是否已经存在cache中了
+            if (strcmp(Cache[i].url, httpHeader-&amp;gt;url) == 0) {//说明url在cache中已经存在
+                flag = 1;   //只要存在，flag标识变量置为1
+                break;
+            }
+        }
+        if (!flag &amp;amp;&amp;amp; cached_number != 1023) {//说明url没有在cache且cache没有满, 把这个url直接存进去
+            memcpy(Cache[cached_number].url, &amp;amp;p[4], strlen(p) - 13);
+            last_cache = cached_number;
+        }
+        else if (!flag &amp;amp;&amp;amp; cached_number == 1023) {//说明url没有在cache且cache满了
+            //为了简单，替换第一个
+            memcpy(Cache[0].url, &amp;amp;p[4], strlen(p) - 13);
+            last_cache = 0;
+        }
+    }
+    else if (p[0] == &#39;P&#39;) { //POST方式
+        memcpy(httpHeader-&amp;gt;method, &amp;quot;POST&amp;quot;, 4);
+        memcpy(httpHeader-&amp;gt;url, &amp;amp;p[5], strlen(p) - 14);
+        for (int i = 0; i &amp;lt; 1024; i++) {
+            if (strcmp(Cache[i].url, httpHeader-&amp;gt;url) == 0) { //同上
+                flag = 1;
+                break;
+            }
+        }
+        if (!flag &amp;amp;&amp;amp; cached_number != 1023) {
+            memcpy(Cache[cached_number].url, &amp;amp;p[5], strlen(p) - 14);
+            last_cache = cached_number;
+        }
+        else if (!flag &amp;amp;&amp;amp; cached_number == 1023) {
+            memcpy(Cache[0].url, &amp;amp;p[4], strlen(p) - 13);
+            last_cache = 0;
+        }
+    }
+
+    p = strtok_s(NULL, delim, &amp;amp;ptr);
+    while (p) {
+        switch (p[0]) {
+        case &#39;H&#39;://HOST
+            memcpy(httpHeader-&amp;gt;host, &amp;amp;p[6], strlen(p) - 6);
+            if (!flag &amp;amp;&amp;amp; cached_number != 1023) {
+                memcpy(Cache[last_cache].host, &amp;amp;p[6], strlen(p) - 6);
+                cached_number++;
+            }
+            else if (!flag &amp;amp;&amp;amp; cached_number == 1023) {
+                memcpy(Cache[last_cache].host, &amp;amp;p[6], strlen(p) - 6);
+            }
+            break;
+        case &#39;C&#39;://Cookie
+            if (strlen(p) &amp;gt; 8) {
+                char header[8];
+                ZeroMemory(header, sizeof(header));
+                memcpy(header, p, 6);
+                if (!strcmp(header, &amp;quot;Cookie&amp;quot;)) {
+                    memcpy(httpHeader-&amp;gt;cookie, &amp;amp;p[8], strlen(p) - 8);
+                }
+            }
+            break;
+            //case &#39;&#39;:
+        default:
+            break;
+        }
+        p = strtok_s(NULL, delim, &amp;amp;ptr);
+    }
+    return flag;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;
+&lt;strong&gt;&lt;a href=&#34;https://github.com/jingyihiter/http_proxy&#34;&gt;重复一遍，源码地址&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>resume</title>
+      <link>http://jingyihiter.github.io/2016/06/30/resume</link>
       <pubDate>Thu, 30 Jun 2016 23:30:25 +0800</pubDate>
       
-      <guid>http://jingyihiter.github.io/2016/06/30/about</guid>
-      <description>&lt;pre&gt;&lt;code&gt;hello
-i love you 
-&lt;/code&gt;&lt;/pre&gt;
+      <guid>http://jingyihiter.github.io/2016/06/30/resume</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/jingyihiter/resume/blob/master/%E5%93%88%E5%B0%94%E6%BB%A8%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E9%A9%AC%E6%99%B6%E4%B9%89-iOS%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88.pdf&#34;&gt;查看简历&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
