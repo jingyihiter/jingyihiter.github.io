@@ -6,8 +6,68 @@
     <description>Recent content in 计算机网络 on JingYi-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 01 Jul 2016 00:24:46 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jul 2016 00:30:47 +0800</lastBuildDate>
     <atom:link href="http://jingyihiter.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>GBN协议的实现</title>
+      <link>http://jingyihiter.github.io/2016/07/01/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0</link>
+      <pubDate>Fri, 01 Jul 2016 00:30:47 +0800</pubDate>
+      
+      <guid>http://jingyihiter.github.io/2016/07/01/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0</guid>
+      <description>
+
+&lt;h1 id=&#34;二-计算机网络之gbn协议的实现:a6ef90ec143a8509356ee3058751c59e&#34;&gt;二、计算机网络之GBN协议的实现&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jingyihiter/GBN.git&#34;&gt;源码下载&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;实验内容-br:a6ef90ec143a8509356ee3058751c59e&#34;&gt;&lt;strong&gt;实验内容：&lt;/strong&gt;&lt;br&gt;&lt;/h2&gt;
+
+&lt;p&gt;1) 基于UDP设计一个简单的GBN协议， 实现单向可靠数据传输 （服务器到客户的数据传输） 。&lt;br&gt;
+2) 模拟引入数据包的丢失，验证所设计协议的有效性。&lt;br&gt;
+3) 改进所设计的 GBN 协议，支持双向数据传输； （选作内容，加分项目，可以当堂完成或课下完成）&lt;br&gt;
+4）将所设计的 GBN 协议改进为 SR 协议。 （选作内容，加分项目,可以当堂完成或课下完成）&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;实验原理及参考-br:a6ef90ec143a8509356ee3058751c59e&#34;&gt;实验原理及参考：&lt;br&gt;&lt;/h2&gt;
+
+&lt;p&gt;实验原理图&lt;br&gt;
+&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/images/gbn.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;作为只实现单向数据传输的 GBN 协议，实质上就是实现为一个 C/S应用。&lt;br&gt;
+服务器端：使用 UDP 协议传输数据（比如传输一个文件） ，等待客户端的请求，接收并处理来自客户端的消息（如数据传输请求） ，当客户端开始请求数据时进入“伪连接”状态（并不是真正的连接，只是一种类似连接的数据发送的状态） ，将数据打包成数据报发送，然后等待客户端的 ACK 信息，同时启动计时器。当收到ACK 时，窗口滑动，正常发送下一个数据报，计时器重新计时；若在计时器超时前没有收到 ACK，则全部重传窗口内的所以已发送的数据报。&lt;br&gt;
+&lt;br&gt;
+客户端：使用 UDP 协议向服务器端请求数据，接收服务器端发送的数据报并返回确认信息 ACK （注意 GBN 为累积确认， 即若 ACK=1 和 3，表示数据帧 2 已经正确接收） ，必须能够模拟 ACK 丢失直至服务器端超时重传的情况。&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;服务器端设计参考:a6ef90ec143a8509356ee3058751c59e&#34;&gt;服务器端设计参考&lt;/h2&gt;
+
+&lt;p&gt;1）命令解析&lt;br&gt;
+为了测试客户端与服务器端的通信交互，方便操作，设置了此过程。&lt;br&gt;
+首先，服务器接收客户端发来的请求数据，&lt;br&gt;
+“-time”表示客户端请求获取当前时间，服务器回复当前时间；&lt;br&gt;
+“-quit”表示客户端退出，服务器回复“Good bye!”；&lt;br&gt;
+“-testgbn”表示客户端请求开始测试 GBN 协议，服务器开始进入GBN 传输状态；其他数据，则服务器直接回复原数据。&lt;br&gt;&lt;br&gt;
+2）数据传输数据帧格式定义&lt;br&gt;
+在以太网中，数据帧的 MTU 为 1500 字节，所以 UDP 数据报的数据部分应小于 1472 字节（除去 IP 头部 20 字节与 UDP 头的 8 字节） ，为此，定义 UDP 数据报的数据部分格式为：&lt;br&gt;
+&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/images/seq.png&#34; alt=&#34;&#34; /&gt;
+Seq 为 1 个字节，取值为 0~255， （故序列号最多为 256 个） ；Data≤1024 个字节，为传输的数据；
+最后一个字节放入 EOF0，表示结尾&lt;br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;客户端设计参考:a6ef90ec143a8509356ee3058751c59e&#34;&gt;客户端设计参考&lt;/h2&gt;
+
+&lt;p&gt;1) ACK 数据帧定义&lt;br&gt;
+由于是从服务器端到客户端的单向数据传输， 因此 ACK 数据帧不包含任何数据，只需要将 ACK 发送给服务器端即可。&lt;br&gt;
+&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/images/ack.png&#34; alt=&#34;&#34; /&gt;
+ACK 字段为一个字节，表示序列号数值；末尾放入 0，表示数据结束。&lt;br&gt;
+2）命令设置&lt;br&gt;
+客户端的命令和服务器端的解析命令向对应，获取当前用户输入并发送给服务器并等待服务器返回数据，如输入“-time”得到服务器的当前时间。&lt;br&gt;
+此处重点介绍“-testgbn [X] [Y]”命令，[X],[Y]均为[0,1]的小数，其中：&lt;br&gt;
+[X]表示客户端的丢包率，模拟网络中报文丢失；&lt;br&gt;
+[Y]表示客户端的 ACK 的丢失率。 （使用随机函数完成） 。&lt;br&gt;
+如果用户不输入，则默认丢失率均为 0.2&lt;br&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Http代理服务器</title>

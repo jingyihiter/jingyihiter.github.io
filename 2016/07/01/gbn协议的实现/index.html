@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>Categories &middot; JingYi-Blog</title>
+    <title>GBN协议的实现 &middot; JingYi-Blog</title>
     <meta name="generator" content="Hugo 0.15" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -9,9 +9,6 @@
     
       <meta name="description" content="">
     
-    
-      <link href="http://jingyihiter.github.io/categories/index.xml" rel="alternate" type="application/rss+xml" title="JingYi-Blog" />
-      <link href="http://jingyihiter.github.io/categories/index.xml" rel="feed" type="application/rss+xml" title="JingYi-Blog" />
     
     <link rel="icon" href="http://jingyihiter.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="http://jingyihiter.github.io/apple-touch-icon.png" />
@@ -21,12 +18,13 @@
     <link rel="stylesheet" href="http://jingyihiter.github.io/fancybox/jquery.fancybox.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Categories" />
+    <meta property="og:title" content="GBN协议的实现" />
 <meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://jingyihiter.github.io/categories/" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://jingyihiter.github.io/2016/07/01/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0" />
 
 
+<meta property="og:updated_time" content="2016-07-01T00:30:47&#43;08:00"/>
 
 
 
@@ -39,21 +37,38 @@
 
     
     
-<meta itemprop="name" content="Categories">
+<meta itemprop="name" content="GBN协议的实现">
 <meta itemprop="description" content="">
 
 
+<meta itemprop="dateModified" content="2016-07-01T00:30:47&#43;08:00" />
+<meta itemprop="wordCount" content="123">
+
+
+
+<meta itemprop="keywords" content="计算机网络,gbn,http,代理服务器,计算机网络," />
+
     
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="GBN协议的实现"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@jingyihiter"/>
+
+
     
 
     
 </head>
 <body>
 <div class="container">
- 
+
 
 <div id="container">
-    <header id="header">
+	<header id="header">
   <div id="header-main" class="header-inner">
     <div class="outer">
       <a href="http://jingyihiter.github.io/" id="logo">
@@ -153,8 +168,10 @@
   </div>
 </header>
 
-    <div class="outer">
-        <aside id="profile">
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
   <div class="inner profile-inner">
     <div class="base-info profile-block">
       <img id="avatar" src="http://jingyihiter.github.io/css/images/jingyi.jpeg">
@@ -243,31 +260,182 @@
 <td><a href="//twitter.com/jingyihiter" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
 
 
-          <td><a href="http://jingyihiter.github.io/categories/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
         </tr>
       </table>
     </div>
   </div>
 </aside>
 
-        <section id="main">
-            <section class="layout-wrap">
-                <div class="layout-title">
-                    <span>Categories</span>
-                </div>
-                <div class="layout-wrap-inner list-categories">
-                    <ul class="category-list">
-                         
-                        <li class="category-list-item">
-                            <a class="category-list-link" href="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
-                            <span class="category-list-count">2</span>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </section>
-        </section>
-        <aside id="sidebar">
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://jingyihiter.github.io/2016/07/01/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0">
+    <h1 class="article-title" itemprop="name">
+        GBN协议的实现
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-07-01 00:30:47 &#43;0800 CST" itemprop="datePublished">2016-07-01</time>
+            &middot;
+            123
+            words
+            &middot;
+            1
+            minute read
+        </div>
+
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                <a class="article-category-link" href="http://jingyihiter.github.io/categories/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c">计算机网络</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                <a class="article-category-link" href="http://jingyihiter.github.io/tags/gbn">GBN</a>
+                &middot;
+                
+                <a class="article-category-link" href="http://jingyihiter.github.io/tags/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c">计算机网络</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                
+
+<h1 id="二-计算机网络之gbn协议的实现:a6ef90ec143a8509356ee3058751c59e">二、计算机网络之GBN协议的实现</h1>
+
+<p><a href="https://github.com/jingyihiter/GBN.git">源码下载</a></p>
+
+<h2 id="实验内容-br:a6ef90ec143a8509356ee3058751c59e"><strong>实验内容：</strong><br></h2>
+
+<p>1) 基于UDP设计一个简单的GBN协议， 实现单向可靠数据传输 （服务器到客户的数据传输） 。<br>
+2) 模拟引入数据包的丢失，验证所设计协议的有效性。<br>
+3) 改进所设计的 GBN 协议，支持双向数据传输； （选作内容，加分项目，可以当堂完成或课下完成）<br>
+4）将所设计的 GBN 协议改进为 SR 协议。 （选作内容，加分项目,可以当堂完成或课下完成）<br>
+<br></p>
+
+<h2 id="实验原理及参考-br:a6ef90ec143a8509356ee3058751c59e">实验原理及参考：<br></h2>
+
+<p>实验原理图<br>
+<img src="https://github.com/jingyihiter/jingyihiter.github.io/raw/master/images/gbn.png" alt="" /></p>
+
+<p>作为只实现单向数据传输的 GBN 协议，实质上就是实现为一个 C/S应用。<br>
+服务器端：使用 UDP 协议传输数据（比如传输一个文件） ，等待客户端的请求，接收并处理来自客户端的消息（如数据传输请求） ，当客户端开始请求数据时进入“伪连接”状态（并不是真正的连接，只是一种类似连接的数据发送的状态） ，将数据打包成数据报发送，然后等待客户端的 ACK 信息，同时启动计时器。当收到ACK 时，窗口滑动，正常发送下一个数据报，计时器重新计时；若在计时器超时前没有收到 ACK，则全部重传窗口内的所以已发送的数据报。<br>
+<br>
+客户端：使用 UDP 协议向服务器端请求数据，接收服务器端发送的数据报并返回确认信息 ACK （注意 GBN 为累积确认， 即若 ACK=1 和 3，表示数据帧 2 已经正确接收） ，必须能够模拟 ACK 丢失直至服务器端超时重传的情况。<br>
+<br></p>
+
+<h2 id="服务器端设计参考:a6ef90ec143a8509356ee3058751c59e">服务器端设计参考</h2>
+
+<p>1）命令解析<br>
+为了测试客户端与服务器端的通信交互，方便操作，设置了此过程。<br>
+首先，服务器接收客户端发来的请求数据，<br>
+“-time”表示客户端请求获取当前时间，服务器回复当前时间；<br>
+“-quit”表示客户端退出，服务器回复“Good bye!”；<br>
+“-testgbn”表示客户端请求开始测试 GBN 协议，服务器开始进入GBN 传输状态；其他数据，则服务器直接回复原数据。<br><br>
+2）数据传输数据帧格式定义<br>
+在以太网中，数据帧的 MTU 为 1500 字节，所以 UDP 数据报的数据部分应小于 1472 字节（除去 IP 头部 20 字节与 UDP 头的 8 字节） ，为此，定义 UDP 数据报的数据部分格式为：<br>
+<img src="https://github.com/jingyihiter/jingyihiter.github.io/raw/master/images/seq.png" alt="" />
+Seq 为 1 个字节，取值为 0~255， （故序列号最多为 256 个） ；Data≤1024 个字节，为传输的数据；
+最后一个字节放入 EOF0，表示结尾<br></p>
+
+<h2 id="客户端设计参考:a6ef90ec143a8509356ee3058751c59e">客户端设计参考</h2>
+
+<p>1) ACK 数据帧定义<br>
+由于是从服务器端到客户端的单向数据传输， 因此 ACK 数据帧不包含任何数据，只需要将 ACK 发送给服务器端即可。<br>
+<img src="https://github.com/jingyihiter/jingyihiter.github.io/raw/master/images/ack.png" alt="" />
+ACK 字段为一个字节，表示序列号数值；末尾放入 0，表示数据结束。<br>
+2）命令设置<br>
+客户端的命令和服务器端的解析命令向对应，获取当前用户输入并发送给服务器并等待服务器返回数据，如输入“-time”得到服务器的当前时间。<br>
+此处重点介绍“-testgbn [X] [Y]”命令，[X],[Y]均为[0,1]的小数，其中：<br>
+[X]表示客户端的丢包率，模拟网络中报文丢失；<br>
+[Y]表示客户端的 ACK 的丢失率。 （使用随机函数完成） 。<br>
+如果用户不输入，则默认丢失率均为 0.2<br></p>
+
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://jingyihiter.github.io/2016/07/01/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0" data-id="a6ef90ec143a8509356ee3058751c59e" class="article-share-link">
+        Share
+    </a>
+    
+    <a href="http://jingyihiter.github.io/2016/07/01/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="http://jingyihiter.github.io/2016/07/01/http%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Http代理服务器</div>
+    </a>
+    
+
+    
+</nav>
+
+
+    </article>
+
+    
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'jingyi';
+    var disqus_identifier = 'http:\/\/jingyihiter.github.io\/2016\/07\/01\/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0';
+    var disqus_title = 'GBN协议的实现';
+    var disqus_url = 'http:\/\/jingyihiter.github.io\/2016\/07\/01\/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
     
 <div class="widget-wrap">
     <h3 class="widget-title">
@@ -280,7 +448,7 @@
                 <div class="item-thumbnail">
                     <a href="http://jingyihiter.github.io/2016/07/01/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0" class="thumbnail">
                     
-                        <span style="background-image:url(http://jingyihiter.github.io/)" alt="Categories" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://jingyihiter.github.io/)" alt="GBN协议的实现" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -305,7 +473,7 @@
                 <div class="item-thumbnail">
                     <a href="http://jingyihiter.github.io/2016/07/01/http%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8" class="thumbnail">
                     
-                        <span style="background-image:url(http://jingyihiter.github.io/)" alt="Categories" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://jingyihiter.github.io/)" alt="GBN协议的实现" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -330,7 +498,7 @@
                 <div class="item-thumbnail">
                     <a href="http://jingyihiter.github.io/2016/06/30/resume" class="thumbnail">
                     
-                        <span style="background-image:url(http://jingyihiter.github.io/)" alt="Categories" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://jingyihiter.github.io/)" alt="GBN协议的实现" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -441,7 +609,8 @@
     <div id="toTop" class="fa fa-chevron-up"></div>
 </aside>
 
-    </div>
+	    
+	</div>
 </div>
 
 <footer id="footer">
@@ -470,5 +639,4 @@ MathJax.Hub.Config({
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 </body>
-
 </html>
