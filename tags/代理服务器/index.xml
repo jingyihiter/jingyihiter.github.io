@@ -30,7 +30,7 @@
   c、网站引导：将用户对某个网站的访问引导至一个模拟网站（钓鱼）&lt;br&gt;
 &lt;br&gt;
 代理服务器，俗称 “翻墙软件” ，允许一个网络终端（一般为客户端）通过这个服务与另一个网络终端（一般为服务器）进行非直接的连接。如图所示，为普通 Web 应用通信方式与采用代理服务器的通信方式的对比。&lt;br&gt;
-&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/images/webhttp.png&#34; alt=&#34;&#34; /&gt;&lt;br&gt;&lt;/p&gt;
+&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/webhttp.png&#34; alt=&#34;&#34; /&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;实现的是多用户代理服务器，实现线程的并行执行。 首先，代理服务器创建 HTTP 代理服务的 TCP 主套接字，通过该主套接字监听等待客户端的连接请求。当客户端连接之后，创建一个子线程，由子线程执行上述一对一的代理过程，服务结束之后子线程终止。与此同时，主线程继续接受下一个客户的代理服务。&lt;br&gt;
 &lt;br&gt;&lt;/p&gt;
@@ -39,7 +39,7 @@
 
 &lt;p&gt;打开IE（windows）-&amp;gt; 工具 -&amp;gt; Internet选项 -&amp;gt; 连接 -&amp;gt; 局域网设置 -&amp;gt; 代理服务器 &lt;br&gt;
 如下设置地址和端口号（端口号和程序中保持一致即可（最好使用较大的，低端口一般被占用））&lt;br&gt;
-&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/images/port.png&#34; alt=&#34;&#34; /&gt;&lt;br&gt;
+&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/port.png&#34; alt=&#34;&#34; /&gt;&lt;br&gt;
 &lt;br&gt;
 &lt;strong&gt;基本的HTTP代理服务器，实现简单，不用处理直接转发接收到目的服务器的报文即可。因此不作介绍，主要讲解实现的扩展功能&lt;/strong&gt;。&lt;br&gt;
 &lt;br&gt;
