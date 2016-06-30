@@ -32,7 +32,7 @@
 &lt;h2 id=&#34;实验原理及参考-br:a6ef90ec143a8509356ee3058751c59e&#34;&gt;实验原理及参考：&lt;br&gt;&lt;/h2&gt;
 
 &lt;p&gt;实验原理图&lt;br&gt;
-&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/gbn.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/GBN.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;作为只实现单向数据传输的 GBN 协议，实质上就是实现为一个 C/S应用。&lt;br&gt;
 服务器端：使用 UDP 协议传输数据（比如传输一个文件） ，等待客户端的请求，接收并处理来自客户端的消息（如数据传输请求） ，当客户端开始请求数据时进入“伪连接”状态（并不是真正的连接，只是一种类似连接的数据发送的状态） ，将数据打包成数据报发送，然后等待客户端的 ACK 信息，同时启动计时器。当收到ACK 时，窗口滑动，正常发送下一个数据报，计时器重新计时；若在计时器超时前没有收到 ACK，则全部重传窗口内的所以已发送的数据报。&lt;br&gt;
