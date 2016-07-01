@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gbn on JingYi-Blog</title>
-    <link>http://jingyihiter.github.io/tags/gbn/</link>
+    <link>/tags/gbn/</link>
     <description>Recent content in Gbn on JingYi-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 01 Jul 2016 00:30:47 +0800</lastBuildDate>
-    <atom:link href="http://jingyihiter.github.io/tags/gbn/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/gbn/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>GBN协议的实现</title>
-      <link>http://jingyihiter.github.io/2016/07/01/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0</link>
+      <link>/2016/07/01/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0</link>
       <pubDate>Fri, 01 Jul 2016 00:30:47 +0800</pubDate>
       
-      <guid>http://jingyihiter.github.io/2016/07/01/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0</guid>
+      <guid>/2016/07/01/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0</guid>
       <description>
 
 &lt;h1 id=&#34;二-计算机网络之gbn协议的实现:a6ef90ec143a8509356ee3058751c59e&#34;&gt;二、计算机网络之GBN协议的实现&lt;/h1&gt;
