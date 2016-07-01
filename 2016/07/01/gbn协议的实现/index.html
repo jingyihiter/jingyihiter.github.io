@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="JingYi">
     
-      <meta name="description" content="">
+      <meta name="description" content="基于UDP设计一个简单的GBN协议， 实现单向可靠数据传输 （服务器到客户的数据传输)">
     
     
     <link rel="icon" href="https://jingyihiter.github.io/favicon.ico">
@@ -19,9 +19,11 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
     <meta property="og:title" content="GBN协议的实现" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="基于UDP设计一个简单的GBN协议， 实现单向可靠数据传输 （服务器到客户的数据传输)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jingyihiter.github.io/2016/07/01/gbn%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%9E%E7%8E%B0" />
+
+  <meta property="og:image" content="https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/GBN.png" />
 
 
 <meta property="og:updated_time" content="2016-07-01T00:30:47&#43;08:00"/>
@@ -38,11 +40,13 @@
     
     
 <meta itemprop="name" content="GBN协议的实现">
-<meta itemprop="description" content="">
+<meta itemprop="description" content="基于UDP设计一个简单的GBN协议， 实现单向可靠数据传输 （服务器到客户的数据传输)">
 
 
 <meta itemprop="dateModified" content="2016-07-01T00:30:47&#43;08:00" />
 <meta itemprop="wordCount" content="124">
+
+  <meta itemprop="image" content="https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/GBN.png">
 
 
 
@@ -50,12 +54,14 @@
 
     
 
-  <meta name="twitter:card" content="summary"/>
+
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image:src" content="https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/GBN.png"/>
 
 
 
 <meta name="twitter:title" content="GBN协议的实现"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="基于UDP设计一个简单的GBN协议， 实现单向可靠数据传输 （服务器到客户的数据传输)"/>
 <meta name="twitter:site" content="@jingyihiter"/>
 
 
@@ -104,7 +110,7 @@
           
           
           
-          <a class="main-nav-link" href="https://jingyihiter.github.io/categories/">About me</a>
+          <a class="main-nav-link" href="https://jingyihiter.github.io/2016/06/30/resume">About me</a>
           
           
       </nav>
@@ -153,7 +159,7 @@
           
           
           
-          <td><a class="main-nav-link" href="https://jingyihiter.github.io/categories/">About me</a></td>
+          <td><a class="main-nav-link" href="https://jingyihiter.github.io/2016/06/30/resume">About me</a></td>
           
           
           <td>
@@ -477,7 +483,7 @@ ACK 字段为一个字节，表示序列号数值；末尾放入 0，表示数�
                 <div class="item-thumbnail">
                     <a href="https://jingyihiter.github.io/2016/07/01/http%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8" class="thumbnail">
                     
-                        <span style="background-image:url(https://jingyihiter.github.io/)" alt="GBN协议的实现" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://jingyihiter.github.io/banner/placeholder.png)" alt="GBN协议的实现" class="thumbnail-image"></span>
                     
                     </a>
                 </div>

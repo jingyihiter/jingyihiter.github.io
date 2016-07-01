@@ -372,7 +372,7 @@ int ParseHttpHead0(char *buffer, HttpHeader *httpHeader) {
       <pubDate>Thu, 30 Jun 2016 23:30:25 +0800</pubDate>
       
       <guid>https://jingyihiter.github.io/2016/06/30/resume</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/resume.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/resume.Png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
