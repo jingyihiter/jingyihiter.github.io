@@ -66,6 +66,8 @@ ACK 字段为一个字节，表示序列号数值；末尾放入 0，表示数�
 [X]表示客户端的丢包率，模拟网络中报文丢失；&lt;br&gt;
 [Y]表示客户端的 ACK 的丢失率。 （使用随机函数完成） 。&lt;br&gt;
 如果用户不输入，则默认丢失率均为 0.2&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;注：参考哈工大计算机网络指导书&lt;/p&gt;
 </description>
     </item>
     
@@ -78,6 +80,8 @@ ACK 字段为一个字节，表示序列号数值；末尾放入 0，表示数�
       <description>
 
 &lt;h1 id=&#34;一-计算机网络之http代理服务器:7e45868971a7bcd8ef176d27cff9b534&#34;&gt;一、计算机网络之HTTP代理服务器&lt;/h1&gt;
+
+&lt;p&gt;注：参考哈工大计算机网络指导书&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/jingyihiter/http_proxy&#34;&gt;源码下载地址&lt;/a&gt;&lt;br&gt;
 &lt;br&gt;
