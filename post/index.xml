@@ -6,8 +6,75 @@
     <description>Recent content in Posts on JingYi-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 01 Jul 2016 00:30:47 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jul 2016 01:04:16 +0800</lastBuildDate>
     <atom:link href="https://jingyihiter.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>IOError: No wkhtmltopdf executable found</title>
+      <link>https://jingyihiter.github.io/2016/07/04/ioerror-no-wkhtmltopdf-executable-found</link>
+      <pubDate>Mon, 04 Jul 2016 01:04:16 +0800</pubDate>
+      
+      <guid>https://jingyihiter.github.io/2016/07/04/ioerror-no-wkhtmltopdf-executable-found</guid>
+      <description>&lt;p&gt;#IOError: No wkhtmltopdf executable found: &amp;ldquo;&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;python使用pdfkit中，如果使用pdfkit.from_url 或者pdfkit.from_string等，就会出现上述错误。而且如果你使用pip安装了 &lt;strong&gt;&lt;em&gt;wkhtmltopdf&lt;/em&gt;&lt;/strong&gt;，还是会出现这个问题：&lt;br&gt;
+If this file exists please check that this process can read it. Otherwise please install wkhtmltopdf - &lt;a href=&#34;https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf&#34;&gt;https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;因此需要去安装windows版本的&lt;strong&gt;&lt;em&gt;wkhtmltopdf&lt;/em&gt;&lt;/strong&gt;&lt;br&gt;
+&lt;a href=&#34;http://wkhtmltopdf.org/downloads.html&#34;&gt;此处进入下载网址&lt;/a&gt;&lt;br&gt;
+安装完成之后需要在代码中添加以下内容：&lt;br&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;path_wk = r&#39;C:\Python27\wkhtmltopdf\bin\wkhtmltopdf.exe&#39; #安装位置
+config = pdfkit.configuration(wkhtmltopdf = path_wk)
+pdfkit.from_url(url, r&#39;D:\are you coding\pdf\taobao.pdf&#39;, configuration=config)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如此即可实现了&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>python学习——保存网页到本地 html及pdf</title>
+      <link>https://jingyihiter.github.io/2016/07/04/python%E5%AD%A6%E4%B9%A0%E4%BF%9D%E5%AD%98%E7%BD%91%E9%A1%B5%E5%88%B0%E6%9C%AC%E5%9C%B0-html%E5%8F%8Apdf</link>
+      <pubDate>Mon, 04 Jul 2016 01:04:01 +0800</pubDate>
+      
+      <guid>https://jingyihiter.github.io/2016/07/04/python%E5%AD%A6%E4%B9%A0%E4%BF%9D%E5%AD%98%E7%BD%91%E9%A1%B5%E5%88%B0%E6%9C%AC%E5%9C%B0-html%E5%8F%8Apdf</guid>
+      <description>&lt;p&gt;#python学习——保存网页到本地 html及pdf&lt;/p&gt;
+
+&lt;p&gt;直接上代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# -*- coding: utf-8 -*-
+&amp;quot;&amp;quot;&amp;quot;
+Created on Tue Jun 14 13:01:58 2016
+
+@author: 
+&amp;quot;&amp;quot;&amp;quot;
+
+import urllib2
+import cookielib
+import pdfkit
+
+cj = cookielib.LWPCookieJar()
+opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+urllib2.install_opener(opener)
+url = &amp;quot;https://www.taobao.com/&amp;quot;
+req = urllib2.Request(url)
+&#39;&#39;&#39; 保存html到本地&#39;&#39;&#39;
+operate = opener.open(req)
+msg = operate.read()
+document = &#39;D://1.html&#39;  
+file_ = open(document,&#39;w&#39;)   
+file_.write(msg)
+file_.close()
+
+path_wk = r&#39;C:\Python27\wkhtmltopdf\bin\wkhtmltopdf.exe&#39;
+config = pdfkit.configuration(wkhtmltopdf = path_wk)
+
+&#39;&#39;&#39;保存pdf到本地&#39;&#39;&#39;
+pdfkit.from_url(url, r&#39;D:\are you coding\pdf\taobao.pdf&#39;, configuration=config)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>GBN协议的实现</title>
