@@ -6,8 +6,71 @@
     <description>Recent content in Posts on JingYi-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jul 2016 01:04:16 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 29 Mar 2017 20:43:29 +0800</lastBuildDate>
     <atom:link href="https://jingyihiter.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>KB-QA系统paper推荐</title>
+      <link>https://jingyihiter.github.io/2017/03/29/kb-qa%E7%B3%BB%E7%BB%9Fpaper%E6%8E%A8%E8%8D%90</link>
+      <pubDate>Wed, 29 Mar 2017 20:43:29 +0800</pubDate>
+      
+      <guid>https://jingyihiter.github.io/2017/03/29/kb-qa%E7%B3%BB%E7%BB%9Fpaper%E6%8E%A8%E8%8D%90</guid>
+      <description>
+
+&lt;h1 id=&#34;基于知识库的问答系统-kb-qa-paper推荐:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;基于知识库的问答系统 KB-QA paper推荐&lt;/h1&gt;
+
+&lt;h2 id=&#34;注-文章推荐来自于知乎专栏-刘大一恒-作者:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;注：文章推荐来自于知乎专栏&amp;ndash;刘大一恒（作者）&lt;/h2&gt;
+
+&lt;p&gt;由于毕设是问答系统，因此需要读相关的文献，刘博士这里推荐的都很不错。专门都下载下来，留下来自己研读，当然也推荐给大家。&lt;/p&gt;
+
+&lt;h2 id=&#34;语义解析部分paper-br:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;语义解析部分paper&lt;br&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Berant J, Chou A, Frostig R, et al. Semantic Parsing on Freebase from Question-Answer Pairs[C]//EMNLP. 2013, 2(5): 6.&lt;br&gt;
+Cai Q, Yates A. Large-scale Semantic Parsing via Schema Matching and Lexicon Extension[C]//ACL (1). 2013: 423-433.&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Kwiatkowski T, Choi E, Artzi Y, et al. Scaling semantic parsers with on-the-fly ontology matching[C]//In Proceedings of EMNLP. Percy. 2013.&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Fader A, Zettlemoyer L, Etzioni O. Open question answering over curated and extracted knowledge bases[C]//Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining. ACM, 2014: 1156-1165.&lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;信息抽取-br:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;信息抽取&lt;br&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Yao X, Van Durme B. Information Extraction over Structured Data: Question Answering with Freebase[C]//ACL (1). 2014: 956-966.&lt;br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;向量建模方法-br:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;向量建模方法&lt;br&gt;&lt;/h2&gt;
+
+&lt;p&gt;Bordes A, Chopra S, Weston J. Question answering with subgraph embeddings[J]. arXiv preprint arXiv:1406.3676, 2014.&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Yang M C, Duan N, Zhou M, et al. Joint Relational Embeddings for Knowledge-based Question Answering[C]//EMNLP. 2014, 14: 645-650.&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Bordes A, Weston J, Usunier N. Open question answering with weakly supervised embedding models[C]//Joint European Conference on Machine Learning and Knowledge Discovery in Databases. Springer Berlin Heidelberg, 2014: 165-180.&lt;br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;卷积神经网络对向量建模-br:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;卷积神经网络对向量建模&lt;br&gt;&lt;/h2&gt;
+
+&lt;p&gt;Dong L, Wei F, Zhou M, et al. Question Answering over Freebase with Multi-Column Convolutional Neural Networks[C]//ACL (1). 2015: 260-269.&lt;br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;卷积神经网络对语义解析-br:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;卷积神经网络对语义解析&lt;br&gt;&lt;/h2&gt;
+
+&lt;p&gt;Yih S W, Chang M W, He X, et al. Semantic parsing via staged query graph generation: Question answering with knowledge base[J]. 2015. &lt;br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;lstm-cnn实体分类-br:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;LSTM CNN实体分类&lt;br&gt;&lt;/h2&gt;
+
+&lt;p&gt;Xu Y, Mou L, Li G, et al. Classifying Relations via Long Short Term Memory Networks along Shortest Dependency Paths[C]//EMNLP. 2015: 1785-1794.&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Zeng D, Liu K, Lai S, et al. Relation Classification via Convolutional Deep Neural Network[C]//COLING. 2014: 2335-2344.（Best paper）&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Zeng D, Liu K, Chen Y, et al. Distant Supervision for Relation Extraction via Piecewise Convolutional Neural Networks[C]//EMNLP. 2015: 1753-1762.&lt;br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;记忆网络-注意力机制-br:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;记忆网络，注意力机制&lt;br&gt;&lt;/h2&gt;
+
+&lt;p&gt;Bordes A, Usunier N, Chopra S, et al. Large-scale simple question answering with memory networks[J]. arXiv preprint arXiv:1506.02075, 2015.&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Zhang Y, Liu K, He S, et al. Question Answering over Knowledge Base with Neural Attention Combining Global Knowledge Information[J]. arXiv preprint arXiv:1606.00979, 2016.&lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
     
     <item>
       <title>IOError: No wkhtmltopdf executable found</title>
