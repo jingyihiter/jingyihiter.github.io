@@ -26,8 +26,9 @@
 &lt;h2 id=&#34;语义解析部分paper-br:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;语义解析部分paper&lt;br&gt;&lt;/h2&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Berant J, Chou A, Frostig R, et al. Semantic Parsing on Freebase from Question-Answer Pairs[C]//EMNLP. 2013, 2(5): 6.&lt;br&gt;
-Cai Q, Yates A. Large-scale Semantic Parsing via Schema Matching and Lexicon Extension[C]//ACL (1). 2013: 423-433.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Berant J, Chou A, Frostig R, et al. Semantic Parsing on Freebase from Question-Answer Pairs[C]//EMNLP. 2013, 2(5): 6.&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Cai Q, Yates A. Large-scale Semantic Parsing via Schema Matching and Lexicon Extension[C]//ACL (1). 2013: 423-433.&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;Kwiatkowski T, Choi E, Artzi Y, et al. Scaling semantic parsers with on-the-fly ontology matching[C]//In Proceedings of EMNLP. Percy. 2013.&lt;br&gt;&lt;/p&gt;
 
@@ -38,25 +39,33 @@ Cai Q, Yates A. Large-scale Semantic Parsing via Schema Matching and Lexicon Ext
 
 &lt;blockquote&gt;
 &lt;p&gt;Yao X, Van Durme B. Information Extraction over Structured Data: Question Answering with Freebase[C]//ACL (1). 2014: 956-966.&lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&#34;向量建模方法-br:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;向量建模方法&lt;br&gt;&lt;/h2&gt;
 
+&lt;blockquote&gt;
 &lt;p&gt;Bordes A, Chopra S, Weston J. Question answering with subgraph embeddings[J]. arXiv preprint arXiv:1406.3676, 2014.&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;Yang M C, Duan N, Zhou M, et al. Joint Relational Embeddings for Knowledge-based Question Answering[C]//EMNLP. 2014, 14: 645-650.&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;Bordes A, Weston J, Usunier N. Open question answering with weakly supervised embedding models[C]//Joint European Conference on Machine Learning and Knowledge Discovery in Databases. Springer Berlin Heidelberg, 2014: 165-180.&lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&#34;卷积神经网络对向量建模-br:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;卷积神经网络对向量建模&lt;br&gt;&lt;/h2&gt;
 
+&lt;blockquote&gt;
 &lt;p&gt;Dong L, Wei F, Zhou M, et al. Question Answering over Freebase with Multi-Column Convolutional Neural Networks[C]//ACL (1). 2015: 260-269.&lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&#34;卷积神经网络对语义解析-br:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;卷积神经网络对语义解析&lt;br&gt;&lt;/h2&gt;
 
+&lt;blockquote&gt;
 &lt;p&gt;Yih S W, Chang M W, He X, et al. Semantic parsing via staged query graph generation: Question answering with knowledge base[J]. 2015. &lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&#34;lstm-cnn实体分类-br:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;LSTM CNN实体分类&lt;br&gt;&lt;/h2&gt;
 
+&lt;blockquote&gt;
 &lt;p&gt;Xu Y, Mou L, Li G, et al. Classifying Relations via Long Short Term Memory Networks along Shortest Dependency Paths[C]//EMNLP. 2015: 1785-1794.&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;Zeng D, Liu K, Lai S, et al. Relation Classification via Convolutional Deep Neural Network[C]//COLING. 2014: 2335-2344.（Best paper）&lt;br&gt;&lt;/p&gt;
