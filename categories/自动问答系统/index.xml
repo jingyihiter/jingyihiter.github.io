@@ -73,9 +73,11 @@
 &lt;p&gt;Zeng D, Liu K, Lai S, et al. Relation Classification via Convolutional Deep Neural Network[C]//COLING. 2014: 2335-2344.（Best paper）&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;Zeng D, Liu K, Chen Y, et al. Distant Supervision for Relation Extraction via Piecewise Convolutional Neural Networks[C]//EMNLP. 2015: 1753-1762.&lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&#34;记忆网络-注意力机制-br:d582df2b1cf9bb3616ee259c8891eb63&#34;&gt;记忆网络，注意力机制&lt;br&gt;&lt;/h2&gt;
 
+&lt;blockquote&gt;
 &lt;p&gt;Bordes A, Usunier N, Chopra S, et al. Large-scale simple question answering with memory networks[J]. arXiv preprint arXiv:1506.02075, 2015.&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;Zhang Y, Liu K, He S, et al. Question Answering over Knowledge Base with Neural Attention Combining Global Knowledge Information[J]. arXiv preprint arXiv:1606.00979, 2016.&lt;br&gt;&lt;/p&gt;
