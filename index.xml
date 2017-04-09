@@ -6,8 +6,92 @@
     <description>Recent content on JingYi-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 29 Mar 2017 20:43:29 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 09 Apr 2017 11:45:08 +0800</lastBuildDate>
     <atom:link href="https://jingyihiter.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>爬虫模拟登录豆瓣</title>
+      <link>https://jingyihiter.github.io/2017/04/09/%E7%88%AC%E8%99%AB%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95%E8%B1%86%E7%93%A3</link>
+      <pubDate>Sun, 09 Apr 2017 11:45:08 +0800</pubDate>
+      
+      <guid>https://jingyihiter.github.io/2017/04/09/%E7%88%AC%E8%99%AB%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95%E8%B1%86%E7%93%A3</guid>
+      <description>
+
+&lt;h2 id=&#34;网络爬虫-模拟登录豆瓣:9e0f1c7021fb77d2438aa4a26d495c1d&#34;&gt;网络爬虫——模拟登录豆瓣&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;# -*- coding: utf-8 -*-
+&amp;quot;&amp;quot;&amp;quot;
+Created on Sat Apr 01 13:44:51 2017
+
+@author: 马晶义
+&amp;quot;&amp;quot;&amp;quot;
+
+import requests
+import re
+headers = {
+    &amp;quot;Host&amp;quot;:&amp;quot;www.douban.com&amp;quot;,
+    &amp;quot;User-Agent&amp;quot;:&amp;quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36&amp;quot;,
+    &amp;quot;Accept-Language&amp;quot;:&amp;quot;zh-CN,zh;q=0.8,zh-TW;q=0.6&amp;quot;,
+    &amp;quot;Accept-Encoding&amp;quot;:&amp;quot;gzip, deflate, sdch, br&amp;quot;,
+    &amp;quot;Connection&amp;quot;:&amp;quot;keep-alive&amp;quot;
+    }
+
+def login():
+    login_str = u&#39;登录&#39;
+    data = {
+    #&#39;ck&#39;:&#39;GiW5&#39;,
+    &#39;source&#39;:&#39;None&#39;,
+    #&#39;redir&#39;:&#39;https://movie.douban.com/&#39;,
+    &#39;form_email&#39;:&#39;xxxxxx&#39;,
+    &#39;form_password&#39;:&#39;xxxxx&#39;,
+    #&#39;captcha_solution&#39;:captcha_solution,
+    #&#39;captcha_id&#39;:captcha_id,
+    &#39;login&#39;:login_str
+    }
+    login_url = &#39;https://www.douban.com/accounts/login&#39;
+    session = requests.session()
+    html = session.get(login_url,headers=headers).text
+    captcha_img_pattern = r&#39;(?&amp;lt;=&amp;lt;img id=&amp;quot;captcha_image&amp;quot; src=\&amp;quot;).*?(?=\&amp;quot;)&#39;
+    captcha_image_url = re.search(captcha_img_pattern,html,re.S|re.M|re.I)
+    if captcha_image_url is not None:
+        captcha_image_url = captcha_image_url.group()
+        print captcha_image_url
+        #captcha_image = session.get(captcha_image_url).text
+        captcha_image = requests.get(captcha_image_url,headers=headers).content
+        document =&#39;login_captcha_douban.jpg&#39; 
+        file_ = open(document,&#39;wb&#39;)
+        file_.write(captcha_image)
+        file_.close()
+        captcha_solution = raw_input(&#39;captcha_solution:&#39;)
+        data[&#39;captcha-solution&#39;] = captcha_solution
+        #获取captcha_id
+        captcha_id_pattern = r&#39;(?&amp;lt;=&amp;lt;input type=&amp;quot;hidden&amp;quot; name=&amp;quot;captcha-id&amp;quot; value=\&amp;quot;).*?(?=\&amp;quot;/&amp;gt;)&#39;
+        captcha_id = re.search(captcha_id_pattern,html,re.S|re.M|re.I)
+        if captcha_id is None:
+            print &#39;captcha_id error&#39;
+        else:
+            captcha_id = captcha_id.group()
+            data[&#39;captcha-id&#39;] = captcha_id
+    session.post(login_url,headers=headers,data=data)
+    print data
+    print session.cookies.items()
+    return session
+
+
+def main():
+    session = login()
+    usinfo = session.get(&#39;https://www.douban.com/people/146365045/&#39;,headers=headers).text
+    #输出你的用户名
+    print (re.search(r&#39;(?&amp;lt;=&amp;lt;title&amp;gt;).*?(?=&amp;lt;/title&amp;gt;)&#39;,usinfo,re.M|re.I|re.S)).group()
+    usinfo = usinfo.encode(&#39;utf-8&#39;)  #保存你个人信息页面
+    file_=open(&#39;use.html&#39;,&#39;wb&#39;)
+    file_.write(usinfo)
+    file_.close()
+
+main()
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>KB-QA系统paper推荐</title>
