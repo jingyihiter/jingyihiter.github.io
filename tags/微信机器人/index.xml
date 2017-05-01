@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>微信机器人 on JingYi-Blog</title>
+    <link>https://jingyihiter.github.io/tags/%E5%BE%AE%E4%BF%A1%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
+    <description>Recent content in 微信机器人 on JingYi-Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 May 2017 10:59:46 +0800</lastBuildDate>
+    <atom:link href="https://jingyihiter.github.io/tags/%E5%BE%AE%E4%BF%A1%E6%9C%BA%E5%99%A8%E4%BA%BA/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>小影机器人使用说明</title>
+      <link>https://jingyihiter.github.io/2017/05/01/%E5%B0%8F%E5%BD%B1%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E</link>
+      <pubDate>Mon, 01 May 2017 10:59:46 +0800</pubDate>
+      
+      <guid>https://jingyihiter.github.io/2017/05/01/%E5%B0%8F%E5%BD%B1%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E</guid>
+      <description>
+
+&lt;h1 id=&#34;小影机器人使用说明:8d2445c903175ede941abe826bf4b8f5&#34;&gt;小影机器人使用说明&lt;/h1&gt;
+
+&lt;p&gt;一、群聊中通过@小影进行提问，小影会@用户进行回答。如图
+    &lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/wcbot.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;二、对于发广告的用户，请发消息举报：举报@xx 如图
+    &lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/wcbot_jubao.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
