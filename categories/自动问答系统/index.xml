@@ -20,9 +20,18 @@
 &lt;h1 id=&#34;小影机器人使用说明:8d2445c903175ede941abe826bf4b8f5&#34;&gt;小影机器人使用说明&lt;/h1&gt;
 
 &lt;p&gt;一、群聊中通过@小影进行提问，小影会@用户进行回答。如图
-    &lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/wcbot.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+    &lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/wcbot.png&#34; alt=&#34;&#34; /&gt;
+二、对于小影无法回答的问题，会在在其他群里进行转发问题，搜集到答案再返回给用户&lt;/p&gt;
 
-&lt;p&gt;二、对于发广告的用户，请发消息举报：举报@xx 如图
+&lt;blockquote&gt;
+&lt;p&gt;回答问题的格式： 回答id:* xxxx 其中*代表问题的编号，在转发问题时会有问题的编号&lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/wcbot_ask.png&#34; alt=&#34;&#34; /&gt;
+ &lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/wcbot_give_answer.png&#34; alt=&#34;&#34; /&gt;
+ &lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/wcbot_answers.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;三、对于发广告的用户，请发消息举报：举报@xx 如图
     &lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/wcbot_jubao.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
