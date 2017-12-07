@@ -660,12 +660,26 @@ int ParseHttpHead0(char *buffer, HttpHeader *httpHeader) {
     </item>
     
     <item>
-      <title>resume</title>
-      <link>https://jingyihiter.github.io/2016/06/30/resume</link>
+      <title>About me</title>
+      <link>https://jingyihiter.github.io/2016/06/30/about-me</link>
       <pubDate>Thu, 30 Jun 2016 23:30:25 +0800</pubDate>
       
-      <guid>https://jingyihiter.github.io/2016/06/30/resume</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/myresume.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+      <guid>https://jingyihiter.github.io/2016/06/30/about-me</guid>
+      <description>
+
+&lt;p&gt;#education&lt;/p&gt;
+
+&lt;p&gt;&lt;sup&gt;2010&lt;/sup&gt;&amp;frasl;&lt;sub&gt;9&lt;/sub&gt;~2013.7   湖北省枣阳市第一中学&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;2013.9~2017.7   哈尔滨工业大学计算机学院本科生&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;2017.9~至今     哈尔滨工业大学计算机学院研究生&lt;br&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;contact:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;contact&lt;/h1&gt;
+
+&lt;p&gt;Tel-num 18045177508&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Email      18045177508@189.cn&lt;br&gt;&lt;/p&gt;
 </description>
     </item>
     
