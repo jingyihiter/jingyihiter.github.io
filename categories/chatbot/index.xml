@@ -29,7 +29,7 @@
 
 &lt;p&gt;聊天机器人的系统框架如下图所示，NLP领域主要以文本输入的聊天机器人为主，因此这里的聊天机器人主要以自然语言理解、对话管理和自然语言生成三个模块为主。&lt;/p&gt;
 
-&lt;p&gt;![聊天机器人的系统框架图](&lt;a href=&#34;https://github.com/jingyihiter/jingyihiter.github.io/blob/master/css/images/the%20architecture%20of%20chatbot.png&#34;&gt;https://github.com/jingyihiter/jingyihiter.github.io/blob/master/css/images/the%20architecture%20of%20chatbot.png&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;![聊天机器人的系统框架图](&lt;a href=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/the_architecture_of_chatbot.png）&#34;&gt;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/the_architecture_of_chatbot.png）&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;自然语言理解:5c282e2caebe9b19eac140714253a324&#34;&gt;&lt;strong&gt;自然语言理解&lt;/strong&gt;&lt;/h2&gt;
 
@@ -91,7 +91,7 @@
 
 &lt;p&gt;缺点：需要大量人工工作，而且可扩展性差；&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/blob/master/css/images/Architecture%20of%20chatbot%20based%20on%20rule.png&#34; alt=&#34;一个基于规则的聊天机器人的系统结构图&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/Architecture_of_chatbot_based_on_rule.png&#34; alt=&#34;一个基于规则的聊天机器人的系统结构图&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Solution2: 基于检索的聊天机器人：&lt;/p&gt;
 
@@ -99,14 +99,14 @@
 
 &lt;p&gt;2、根据用户问句，在对话库中进行模糊匹配找到最合适的应答内容&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/blob/master/css/images/wechat%20robot%20based%20on%20IR.png&#34; alt=&#34;基于检索的微信聊天机器人&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/wechat_robot_based_on_IR.png&#34; alt=&#34;基于检索的微信聊天机器人&#34; /&gt;
 Solution3: 基于深度学习的聊天机器人&lt;/p&gt;
 
 &lt;p&gt;根据context来生成对话，如seq2seq+attention框架&lt;/p&gt;
 
 &lt;p&gt;1、Encoder：压缩表示当前用户问题与上下文信息
  2、Decoder：解码出答案
-&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/blob/master/css/images/Architercture%20of%20chatbot%20based%20on%20Deep%20Learning.png&#34; alt=&#34;一个基于深度学习的聊天机器人的系统&#34; /&gt;
+&lt;img src=&#34;https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/Architercture_of_chatbot_based_on_Deep_Learning.png&#34; alt=&#34;一个基于深度学习的聊天机器人的系统&#34; /&gt;
 3、面临的问题：&lt;/p&gt;
 
 &lt;p&gt;聊天机器人的评价标准&lt;/p&gt;
