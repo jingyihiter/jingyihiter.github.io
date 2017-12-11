@@ -42,7 +42,7 @@
 
 
 <meta itemprop="dateModified" content="2017-12-11T21:40:07&#43;08:00" />
-<meta itemprop="wordCount" content="184">
+<meta itemprop="wordCount" content="186">
 
 
 
@@ -287,7 +287,7 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2017-12-11 21:40:07 &#43;0800 CST" itemprop="datePublished">2017-12-11</time>
             &middot;
-            184
+            186
             words
             &middot;
             1
@@ -326,7 +326,9 @@
             <div class="article-entry" itemprop="articleBody">
                 
 
-<h2 id="闲聊机器人调研:5c282e2caebe9b19eac140714253a324">闲聊机器人调研</h2>
+<p>闲聊机器人调研</p>
+
+<hr />
 
 <p>Q:闲聊机器人现如今主要用了哪些技术？分为哪些模块？</p>
 
@@ -336,7 +338,7 @@
 
 <p>聊天机器人的系统框架如下图所示，NLP领域主要以文本输入的聊天机器人为主，因此这里的聊天机器人主要以自然语言理解、对话管理和自然语言生成三个模块为主。</p>
 
-<p><img src="%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6%E5%9B%BE.png" alt="聊天机器人的系统框架图" /></p>
+<p><img src="https://github.com/jingyihiter/jingyihiter.github.io/blob/master/css/images/%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6%E5%9B%BE.png" alt="聊天机器人的系统框架图" /></p>
 
 <h2 id="自然语言理解:5c282e2caebe9b19eac140714253a324"><strong>自然语言理解</strong></h2>
 
@@ -398,7 +400,7 @@
 
 <p>缺点：需要大量人工工作，而且可扩展性差；</p>
 
-<p><img src="%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt="一个基于规则的聊天机器人的系统结构图" /></p>
+<p><img src="https://github.com/jingyihiter/jingyihiter.github.io/blob/master/css/images/%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt="一个基于规则的聊天机器人的系统结构图" /></p>
 
 <p>Solution2: 基于检索的聊天机器人：</p>
 
@@ -406,14 +408,14 @@
 
 <p>2、根据用户问句，在对话库中进行模糊匹配找到最合适的应答内容</p>
 
-<p><img src="%E5%9F%BA%E4%BA%8E%E6%A3%80%E7%B4%A2%E7%9A%84%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA.png" alt="基于检索的微信聊天机器人" />
+<p><img src="https://github.com/jingyihiter/jingyihiter.github.io/blob/master/css/images/%E5%9F%BA%E4%BA%8E%E6%A3%80%E7%B4%A2%E7%9A%84%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA.png" alt="基于检索的微信聊天机器人" />
 Solution3: 基于深度学习的聊天机器人</p>
 
 <p>根据context来生成对话，如seq2seq+attention框架</p>
 
 <p>1、Encoder：压缩表示当前用户问题与上下文信息
  2、Decoder：解码出答案
-<img src="%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E7%B3%BB%E7%BB%9F.png" alt="一个基于深度学习的聊天机器人的系统" />
+<img src="https://github.com/jingyihiter/jingyihiter.github.io/blob/master/css/images/%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E7%B3%BB%E7%BB%9F.png" alt="一个基于深度学习的聊天机器人的系统" />
 3、面临的问题：</p>
 
 <p>聊天机器人的评价标准</p>
@@ -535,6 +537,8 @@ Solution3: 基于深度学习的聊天机器人</p>
 <p>传统的seq2seq模型以及针对聊天机器人的各种变种模型</p>
 
 <p>(深度学习框架Theano,Tensorflow,Torch等)</p>
+
+<p>(致谢：感谢Huanqin Wu的参与)</p>
 
             </div>
             <footer class="article-footer">
