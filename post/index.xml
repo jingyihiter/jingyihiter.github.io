@@ -6,8 +6,228 @@
     <description>Recent content in Posts on JingYi-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 May 2017 10:59:46 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 11 Dec 2017 21:40:07 +0800</lastBuildDate>
     <atom:link href="https://jingyihiter.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>survey_chatbot</title>
+      <link>https://jingyihiter.github.io/2017/12/11/survey_chatbot</link>
+      <pubDate>Mon, 11 Dec 2017 21:40:07 +0800</pubDate>
+      
+      <guid>https://jingyihiter.github.io/2017/12/11/survey_chatbot</guid>
+      <description>
+
+&lt;h2 id=&#34;闲聊机器人调研:5c282e2caebe9b19eac140714253a324&#34;&gt;闲聊机器人调研&lt;/h2&gt;
+
+&lt;p&gt;Q:闲聊机器人现如今主要用了哪些技术？分为哪些模块？&lt;/p&gt;
+
+&lt;h1 id=&#34;1-聊天机器人系统:5c282e2caebe9b19eac140714253a324&#34;&gt;1、聊天机器人系统&lt;/h1&gt;
+
+&lt;p&gt;这一部分参考(&lt;a href=&#34;http://www.sohu.com/a/56113983_129720&#34;&gt;http://www.sohu.com/a/56113983_129720&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;聊天机器人的系统框架如下图所示，NLP领域主要以文本输入的聊天机器人为主，因此这里的聊天机器人主要以自然语言理解、对话管理和自然语言生成三个模块为主。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6%E5%9B%BE.png&#34; alt=&#34;聊天机器人的系统框架图&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;自然语言理解:5c282e2caebe9b19eac140714253a324&#34;&gt;&lt;strong&gt;自然语言理解&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;自然语言理解的目的是为聊天任务生成一种语义表示形式。通常来说，聊天机器人系统中的自然语言理解功能包括&lt;strong&gt;用户意图识别、用户情感识别、指代消解、省略恢复、回复确认及拒识判断&lt;/strong&gt;等技术&lt;/p&gt;
+
+&lt;p&gt;1）&lt;strong&gt;用户意图识别&lt;/strong&gt;：用户意图又包括显式意图和隐式意图，显示的意图通常对应一个明确的需求，而隐式意图则较难判断，如用户输入“我的手机用了三年了”，有可能想要换一个手机或者显示其手机性能和质量良好。&lt;/p&gt;
+
+&lt;p&gt;2）&lt;strong&gt;用户情感识别&lt;/strong&gt;：用户情感同样也包含显式和隐式两种，如用户输入“我今天非常高兴”，明确表明了喜悦的情感，而“今天考试刚刚及格”，则不太容易判断用户的情感。&lt;/p&gt;
+
+&lt;p&gt;3）&lt;strong&gt;指代消解和省略恢复&lt;/strong&gt;：在对话过程中，由于人们之间具备聊天主题背景一致性的前提，用户通常使用代词来指代上文中的某个实体或事件，或者干脆省略一部分句子成分。但对于聊天机器人系统来说只有明确了代词指代的成分以及句子中省略的成分，才能正确理解用户的输入，给出合乎上下文语义的回复。因此需要进行代词的消解和省略的恢复。&lt;/p&gt;
+
+&lt;p&gt;4）&lt;strong&gt;回复确认&lt;/strong&gt;：用户意图有时会带有一定的模糊性，这时就需要系统具有主动询问的功能，进而对模糊的意图进行确认，即回复确认。&lt;/p&gt;
+
+&lt;p&gt;5）&lt;strong&gt;拒识判断&lt;/strong&gt;：聊天机器人系统应当具备一定的拒识能力，主动拒绝识别超出自身回复范围之外或者涉及敏感话题的用户输入。&lt;/p&gt;
+
+&lt;h2 id=&#34;对话管理:5c282e2caebe9b19eac140714253a324&#34;&gt;&lt;strong&gt;对话管理&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;对话管理功能主要协调聊天机器人的各个部分，并维护对话的结构和状态。对话管理功能中涉及到的关键技术主要有&lt;strong&gt;对话行为识别、对话状态识别、对话策略学习及对话奖励&lt;/strong&gt;等。&lt;/p&gt;
+
+&lt;p&gt;1）&lt;strong&gt;对话行为识别&lt;/strong&gt;：对话行为是指预先定义或者动态生成的对话意图的抽象表示形式。分为封闭式和开放式两种，所谓封闭式对话行为，即将对话意图映射到预先定义好的对话行为类别体系。常见于特定领域或特定任务的对话系统，如票务预订、酒店预订等，例如：“我想预订一个标准间”，这句话被识别为Reservation(Standard_room) 的对话行为。相对的，开放式对话行为则没有预先定义好的对话行为类别体系，对话行为动态生成。常见于开放域对话系统，如聊天机器人。例如：“今天心情真好啊”，这句话的对话行为可以通过隐式的主题、N元组、相似句子簇、连续向量等形式表达。&lt;/p&gt;
+
+&lt;p&gt;2）&lt;strong&gt;对话状态识别&lt;/strong&gt;：对话状态与对话的时序及对话行为相关联，在t时刻的对话行为序列即为t时刻的对话状态。因此，对话状态的转移就由前一时刻的对话状态与当前时刻的对话行为决定。&lt;/p&gt;
+
+&lt;p&gt;3）&lt;strong&gt;对话策略学习&lt;/strong&gt;：通常是通过离线的方式，从人-人对话数据中学习对话的行为、状态、流行度等信息，从而作为指导人-机对话的策略。这里流行度通常是指特定模式在语料库中的频度。&lt;/p&gt;
+
+&lt;p&gt;4）&lt;strong&gt;对话奖励&lt;/strong&gt;：对话奖励是对话系统的中间级评价机制，但会影响对话系统的整体评价。常见的对话奖励有槽填充效率和回复流行度等。&lt;/p&gt;
+
+&lt;h2 id=&#34;自然语言生成:5c282e2caebe9b19eac140714253a324&#34;&gt;自然语言生成&lt;/h2&gt;
+
+&lt;p&gt;自然语言生成通常根据对话管理部分产生的非语言信息，自动生成面向用户的自然语言反馈。近年来，在聊天机器人系统上的对话生成主要涉及&lt;strong&gt;检索式和生成式&lt;/strong&gt;两类技术。&lt;/p&gt;
+
+&lt;p&gt;1）&lt;strong&gt;检索式对话生成技术&lt;/strong&gt;：检索式的代表性技术是在已有的人人对话语料库中通过排序学习技术和深度匹配技术找到适合当前输入的最佳回复。这种方法的局限是仅能以固定的语言模式进行回复，无法实现词语的多样性组合。&lt;/p&gt;
+
+&lt;p&gt;2）&lt;strong&gt;生成式对话生成技术&lt;/strong&gt;：生成式的代表性技术则是从已有的人人对话中学习语言的组合模式，是通过一种类似机器翻译中常用的“编码-解码”的过程去逐字或逐词地生成一个回复，这种回复有可能是从未在语料库中出现的、由聊天机器人自己“创造”出来的句子。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;聊天机器人研究存在的挑战&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;聊天机器人的研究存在的挑战包括：对话上下文建模、对话过程中的知识表示、对话策略学习、聊天机器人智能程度的评价等。&lt;/p&gt;
+
+&lt;p&gt;1）&lt;strong&gt;对话上下文建模&lt;/strong&gt;：聊天是一个有特定背景的连续交互过程，在这一过程中经常出现上下文省略和指代的情况。一句话的意义有时要结合对话上下文或者相关的背景才能确定，而现有的自然语言理解主要基于上下文无关假设，因此对话上下文的建模成为聊天机器人系统的主要挑战之一。&lt;/p&gt;
+
+&lt;p&gt;2）&lt;strong&gt;对话过程中的知识表示&lt;/strong&gt;：知识表示一直就是人工智能领域的重要课题，也是聊天机器人提供信息服务的基础。聊天机器人相关的领域任务可能有复杂的组成，牵涉很多的因素，只有了解这些因素的关系和相关的含义，才能与用户做到真正意义上的交流。&lt;/p&gt;
+
+&lt;p&gt;3）&lt;strong&gt;对话策略学习&lt;/strong&gt;：对话策略涉及很多方面，其中最主要的是对话的主导方式。对话主导方式可以分为用户主导、系统主导和混合主导三种方式。在当前的对话管理研究中，系统应答的目标是自然、友好、积极，在不会发生问题的情况下，让用户尽可能自主，实现对话的混合主导。&lt;/p&gt;
+
+&lt;p&gt;4）&lt;strong&gt;聊天机器人智能程度的评价&lt;/strong&gt;：目前聊天机器人智能程度的评价也是一项挑战。虽然可以采用一些通用的客观评价标准，如回答正确率、任务完成率、对话回合数、对话时间、系统平均响应时间、错误信息率等，对聊天机器人进行评价，评价的基本单元是单轮对话。但是，由于人机对话过程是一个连续的过程，而对不同聊天机器人系统的连续对话的评价仅能保证首句输入的一致性，当对话展开后，不同系统的回复不尽相同，因此不能简单地将连续对话切分成单轮对话去评价，于是设计合理的人工主观评价也许能够成为客观评价标准之外，对聊天机器人系统智能程度评价的重要指标。&lt;/p&gt;
+
+&lt;h1 id=&#34;2-聊天机器人的现有解决方案:5c282e2caebe9b19eac140714253a324&#34;&gt;2、聊天机器人的现有解决方案&lt;/h1&gt;
+
+&lt;p&gt;闲聊机器人问题的组成：&lt;/p&gt;
+
+&lt;p&gt;2.1、答案生成（选择）&lt;/p&gt;
+
+&lt;p&gt;Solution1: 基于规则的聊天机器人：&lt;/p&gt;
+
+&lt;p&gt;通过人工设定对话场景，并对每个场景写一些针对性的对话模板或规则库，所有问题的答案均是根据已建立的规则库进行规则匹配和推理得到,具有准确性高、知识获取便捷的特点。&lt;/p&gt;
+
+&lt;p&gt;优点：精准性高&lt;/p&gt;
+
+&lt;p&gt;缺点：需要大量人工工作，而且可扩展性差；&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%9B%BE.png&#34; alt=&#34;一个基于规则的聊天机器人的系统结构图&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Solution2: 基于检索的聊天机器人：&lt;/p&gt;
+
+&lt;p&gt;1、预先存储好对话库并建立索引&lt;/p&gt;
+
+&lt;p&gt;2、根据用户问句，在对话库中进行模糊匹配找到最合适的应答内容&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;%E5%9F%BA%E4%BA%8E%E6%A3%80%E7%B4%A2%E7%9A%84%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA.png&#34; alt=&#34;基于检索的微信聊天机器人&#34; /&gt;
+Solution3: 基于深度学习的聊天机器人&lt;/p&gt;
+
+&lt;p&gt;根据context来生成对话，如seq2seq+attention框架&lt;/p&gt;
+
+&lt;p&gt;1、Encoder：压缩表示当前用户问题与上下文信息
+ 2、Decoder：解码出答案
+&lt;img src=&#34;%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E7%B3%BB%E7%BB%9F.png&#34; alt=&#34;一个基于深度学习的聊天机器人的系统&#34; /&gt;
+3、面临的问题：&lt;/p&gt;
+
+&lt;p&gt;聊天机器人的评价标准&lt;/p&gt;
+
+&lt;p&gt;缺乏标准化的大规模训练数据&lt;/p&gt;
+
+&lt;p&gt;“安全回答”（Safe Response）问题：聊天机器人都用少数非常常见的句子进行应答&lt;/p&gt;
+
+&lt;p&gt;个性信息一致性问题&lt;/p&gt;
+
+&lt;p&gt;2.2、对话状态跟踪&lt;/p&gt;
+
+&lt;p&gt;理解或者捕捉user intention或者goal&lt;/p&gt;
+
+&lt;p&gt;2.3、用户建模&lt;/p&gt;
+
+&lt;p&gt;3.1对于复杂、细致的业务，需要对用户建模，相同的问题，bot给每个人的response是不同的。&lt;/p&gt;
+
+&lt;p&gt;3.2用户建模需要涉及的不仅仅是简单的用户基本信息和用户的一些显式反馈信息，而更重要的是用户的history conversations，这些隐式的反馈信息。&lt;/p&gt;
+
+&lt;p&gt;3.3 对user进行建模，就是做一个个性化的bot，生成的每一个response都有这个user鲜明的特点&lt;/p&gt;
+
+&lt;p&gt;2.4 闲聊机器人的性能评价&lt;/p&gt;
+
+&lt;p&gt;采用机器翻译中的bleu值，  对话的平均轮数，  人工进行评价。其中设计评价机制评分，进行人工评价更有说服力。&lt;/p&gt;
+
+&lt;p&gt;Reference:&lt;/p&gt;
+
+&lt;p&gt;[1] &lt;a href=&#34;http://www.sohu.com/a/110529212_119709&#34;&gt;http://www.sohu.com/a/110529212_119709&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[2] &lt;a href=&#34;http://blog.csdn.net/malefactor/article/details/51901115&#34;&gt;http://blog.csdn.net/malefactor/article/details/51901115&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[3] 王磊,魏勇,邸建勋,杨小琳. 本体聊天机器人的设计与应用[J]. 自动化与信息工程,2016,37(04):13-18&lt;/p&gt;
+
+&lt;h1 id=&#34;3-微软小冰的例子:5c282e2caebe9b19eac140714253a324&#34;&gt;3、微软小冰的例子&lt;/h1&gt;
+
+&lt;p&gt;参考（&lt;a href=&#34;http://www.ccf.org.cn/sites/weixin/chatbot.pdf&#34;&gt;http://www.ccf.org.cn/sites/weixin/chatbot.pdf&lt;/a&gt;）&lt;/p&gt;
+
+&lt;p&gt;小冰作为闲聊机器人，它的聊天引擎主要有：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;底层&lt;/strong&gt;：数据层，包含普通数据，抽取的聊天知识&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;中间层&lt;/strong&gt;：引擎与技术，比如闲聊引擎，问答引擎，Task-completion引擎，基于搜索和基于生成的技术。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;上层&lt;/strong&gt;：用户画像、上下文场景，通过聊天建立用户画像和上下文场景。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;闲聊引擎&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;1）个性化聊天：根据用户不同作不同倾向性的回复，根据用户画像选最优的回复&lt;/p&gt;
+
+&lt;p&gt;2）深度聊天：即针对某些重点话题整理聊天知识，使得聊天内容更加深入和丰富&lt;/p&gt;
+
+&lt;p&gt;3）基于图片的聊天：根据对图片的识别和理解，形成聊天&lt;/p&gt;
+
+&lt;p&gt;4）基于图片标题的聊天：根据图片的内容和对图片标题的描述，生成评论性的聊天&lt;/p&gt;
+
+&lt;h1 id=&#34;4-实现聊天机器人的技术:5c282e2caebe9b19eac140714253a324&#34;&gt;4、实现聊天机器人的技术&lt;/h1&gt;
+
+&lt;p&gt;搭建一个简单的聊天机器人demo需要的技术&lt;/p&gt;
+
+&lt;h2 id=&#34;4-1-数据集:5c282e2caebe9b19eac140714253a324&#34;&gt;4.1 数据集&lt;/h2&gt;
+
+&lt;p&gt;对话系统的数据集(参考：&lt;a href=&#34;https://github.com/candlewill/Dialog_Corpus&#34;&gt;https://github.com/candlewill/Dialog_Corpus&lt;/a&gt;)：&lt;/p&gt;
+
+&lt;p&gt;1) &lt;a href=&#34;https://github.com/rustch3n/dgk_lost_conv&#34;&gt;dgk_shooter_min.conv.zip&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;中文电影对白语料，噪音比较大，许多对白问答关系没有对应好&lt;/p&gt;
+
+&lt;p&gt;2) &lt;a href=&#34;https://github.com/kite1988/nus-sms-corpus&#34;&gt;The NUS SMS Corpus&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;包含中文和英文短信息语料，据说是世界最大公开的短消息语料&lt;/p&gt;
+
+&lt;p&gt;3) &lt;a href=&#34;https://github.com/gunthercox/chatterbot-corpus/tree/master/chatterbot_corpus/data&#34;&gt;ChatterBot中文基本聊天语料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ChatterBot聊天引擎提供的一点基本中文聊天语料，量很少，但质量比较高&lt;/p&gt;
+
+&lt;p&gt;4) &lt;a href=&#34;https://github.com/karthikncode/nlp-datasets&#34;&gt;Datasets for Natural Language Processing&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这是他人收集的自然语言处理相关数据集，主要包含Question Answering，Dialogue Systems， Goal-Oriented Dialogue Systems三部分，都是英文文本。可以使用机器翻译为中文，供中文对话使用&lt;/p&gt;
+
+&lt;p&gt;5) &lt;a href=&#34;https://github.com/rustch3n/dgk_lost_conv/tree/master/results&#34;&gt;小黄鸡&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;据传这就是小黄鸡的语料：xiaohuangji50w_fenciA.conv.zip （已分词） 和 xiaohuangji50w_nofenci.conv.zip （未分词）&lt;/p&gt;
+
+&lt;p&gt;6) &lt;a href=&#34;https://github.com/Samurais/egret-wenda-corpus&#34;&gt;白鹭时代中文问答语料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;由白鹭时代官方论坛问答板块10,000+ 问题中，选择被标注了“最佳答案”的纪录汇总而成。人工review raw data，给每一个问题，一个可以接受的答案。目前，语料库只包含2907个问答。(备份)&lt;/p&gt;
+
+&lt;p&gt;7) &lt;a href=&#34;https://github.com/Marsan-Ma/chat_corpus&#34;&gt;Chat corpus repository&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;chat corpus collection from various open sources&lt;/p&gt;
+
+&lt;p&gt;包括：开放字幕、英文电影字幕、中文歌词、英文推文&lt;/p&gt;
+
+&lt;p&gt;8) &lt;a href=&#34;https://github.com/Samurais/insuranceqa-corpus-zh&#34;&gt;保险行业QA语料库&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;通过翻译 insuranceQA产生的数据集。train_data含有问题12,889条，数据 141779条，正例：负例 = 1:10； test_data含有问题2,000条，数据 22000条，正例：负例 = 1:10；valid_data含有问题2,000条，数据 22000条，正例：负例 = 1:10&lt;/p&gt;
+
+&lt;h2 id=&#34;4-2-基于规则与检索的聊天机器人:5c282e2caebe9b19eac140714253a324&#34;&gt;4.2 基于规则与检索的聊天机器人&lt;/h2&gt;
+
+&lt;p&gt;利用开源的搜索引擎做检索(参考：&lt;a href=&#34;https://www.zhihu.com/question/19583321&#34;&gt;https://www.zhihu.com/question/19583321&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Lucene及其变种&lt;/p&gt;
+
+&lt;p&gt;· Lucene &lt;a href=&#34;https://link.zhihu.com/?target=http%3A//lucene.apache.org/&#34;&gt;http://lucene.apache.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;· Solr   &lt;a href=&#34;http://lucene.apache.org/solr/&#34;&gt;http://lucene.apache.org/solr/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;· Elasticsearch &lt;a href=&#34;https://link.zhihu.com/?target=http%3A//www.elasticsearch.org/&#34;&gt;http://www.elasticsearch.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Zettair &lt;a href=&#34;https://link.zhihu.com/?target=http%3A//www.seg.rmit.edu.au/zettair/&#34;&gt;http://www.seg.rmit.edu.au/zettair/&lt;/a&gt; Indri &lt;a href=&#34;https://link.zhihu.com/?target=http%3A//www.lemurproject.org/indri/&#34;&gt;http://www.lemurproject.org/indri/&lt;/a&gt; Terrier &lt;a href=&#34;https://link.zhihu.com/?target=http%3A//terrier.org/&#34;&gt;http://terrier.org/&lt;/a&gt; Galago &lt;a href=&#34;https://link.zhihu.com/?target=http%3A//www.galagosearch.org/&#34;&gt;http://www.galagosearch.org/&lt;/a&gt; Zebra &lt;a href=&#34;https://link.zhihu.com/?target=https%3A//www.indexdata.com/zebra&#34;&gt;https://www.indexdata.com/zebra&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Sphinx &lt;a href=&#34;http://sphinxsearch.com/&#34;&gt;http://sphinxsearch.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;4-3-基于生成式的聊天机器人:5c282e2caebe9b19eac140714253a324&#34;&gt;4.3 基于生成式的聊天机器人&lt;/h2&gt;
+
+&lt;p&gt;基于Seq2Seq模型的回复生成：&lt;/p&gt;
+
+&lt;p&gt;传统的seq2seq模型以及针对聊天机器人的各种变种模型&lt;/p&gt;
+
+&lt;p&gt;(深度学习框架Theano,Tensorflow,Torch等)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>小影机器人使用说明</title>
@@ -667,7 +887,7 @@ int ParseHttpHead0(char *buffer, HttpHeader *httpHeader) {
       <guid>https://jingyihiter.github.io/2016/06/30/about-me</guid>
       <description>
 
-&lt;p&gt;#education&lt;/p&gt;
+&lt;h2 id=&#34;education:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;education&lt;/h2&gt;
 
 &lt;p&gt;&lt;sup&gt;2010&lt;/sup&gt;&amp;frasl;&lt;sub&gt;9&lt;/sub&gt;~2013.7   湖北省枣阳市第一中学&lt;br&gt;&lt;/p&gt;
 
@@ -675,11 +895,231 @@ int ParseHttpHead0(char *buffer, HttpHeader *httpHeader) {
 
 &lt;p&gt;2017.9~至今     哈尔滨工业大学计算机学院研究生&lt;br&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;contact:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;contact&lt;/h1&gt;
+&lt;h2 id=&#34;contact:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;contact&lt;/h2&gt;
 
-&lt;p&gt;Tel-num 18045177508&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Tel-num——18045177508&lt;br&gt;&lt;/p&gt;
 
-&lt;p&gt;Email      18045177508@189.cn&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Email——18045177508@189.cn&lt;br&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://jingyihiter.github.io/1/01/01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jingyihiter.github.io/1/01/01/</guid>
+      <description>
+
+&lt;h2 id=&#34;闲聊机器人调研:6ec0b5ab1b904817be52eac14e5c3565&#34;&gt;闲聊机器人调研&lt;/h2&gt;
+
+&lt;p&gt;Q:闲聊机器人现如今主要用了哪些技术？分为哪些模块？&lt;/p&gt;
+
+&lt;h1 id=&#34;1-聊天机器人系统:6ec0b5ab1b904817be52eac14e5c3565&#34;&gt;1、聊天机器人系统&lt;/h1&gt;
+
+&lt;p&gt;这一部分参考(&lt;a href=&#34;http://www.sohu.com/a/56113983_129720&#34;&gt;http://www.sohu.com/a/56113983_129720&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;聊天机器人的系统框架如下图所示，NLP领域主要以文本输入的聊天机器人为主，因此这里的聊天机器人主要以自然语言理解、对话管理和自然语言生成三个模块为主。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6%E5%9B%BE.png&#34; alt=&#34;聊天机器人的系统框架图&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;自然语言理解:6ec0b5ab1b904817be52eac14e5c3565&#34;&gt;&lt;strong&gt;自然语言理解&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;自然语言理解的目的是为聊天任务生成一种语义表示形式。通常来说，聊天机器人系统中的自然语言理解功能包括&lt;strong&gt;用户意图识别、用户情感识别、指代消解、省略恢复、回复确认及拒识判断&lt;/strong&gt;等技术&lt;/p&gt;
+
+&lt;p&gt;1）&lt;strong&gt;用户意图识别&lt;/strong&gt;：用户意图又包括显式意图和隐式意图，显示的意图通常对应一个明确的需求，而隐式意图则较难判断，如用户输入“我的手机用了三年了”，有可能想要换一个手机或者显示其手机性能和质量良好。&lt;/p&gt;
+
+&lt;p&gt;2）&lt;strong&gt;用户情感识别&lt;/strong&gt;：用户情感同样也包含显式和隐式两种，如用户输入“我今天非常高兴”，明确表明了喜悦的情感，而“今天考试刚刚及格”，则不太容易判断用户的情感。&lt;/p&gt;
+
+&lt;p&gt;3）&lt;strong&gt;指代消解和省略恢复&lt;/strong&gt;：在对话过程中，由于人们之间具备聊天主题背景一致性的前提，用户通常使用代词来指代上文中的某个实体或事件，或者干脆省略一部分句子成分。但对于聊天机器人系统来说只有明确了代词指代的成分以及句子中省略的成分，才能正确理解用户的输入，给出合乎上下文语义的回复。因此需要进行代词的消解和省略的恢复。&lt;/p&gt;
+
+&lt;p&gt;4）&lt;strong&gt;回复确认&lt;/strong&gt;：用户意图有时会带有一定的模糊性，这时就需要系统具有主动询问的功能，进而对模糊的意图进行确认，即回复确认。&lt;/p&gt;
+
+&lt;p&gt;5）&lt;strong&gt;拒识判断&lt;/strong&gt;：聊天机器人系统应当具备一定的拒识能力，主动拒绝识别超出自身回复范围之外或者涉及敏感话题的用户输入。&lt;/p&gt;
+
+&lt;h2 id=&#34;对话管理:6ec0b5ab1b904817be52eac14e5c3565&#34;&gt;&lt;strong&gt;对话管理&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;对话管理功能主要协调聊天机器人的各个部分，并维护对话的结构和状态。对话管理功能中涉及到的关键技术主要有&lt;strong&gt;对话行为识别、对话状态识别、对话策略学习及对话奖励&lt;/strong&gt;等。&lt;/p&gt;
+
+&lt;p&gt;1）&lt;strong&gt;对话行为识别&lt;/strong&gt;：对话行为是指预先定义或者动态生成的对话意图的抽象表示形式。分为封闭式和开放式两种，所谓封闭式对话行为，即将对话意图映射到预先定义好的对话行为类别体系。常见于特定领域或特定任务的对话系统，如票务预订、酒店预订等，例如：“我想预订一个标准间”，这句话被识别为Reservation(Standard_room) 的对话行为。相对的，开放式对话行为则没有预先定义好的对话行为类别体系，对话行为动态生成。常见于开放域对话系统，如聊天机器人。例如：“今天心情真好啊”，这句话的对话行为可以通过隐式的主题、N元组、相似句子簇、连续向量等形式表达。&lt;/p&gt;
+
+&lt;p&gt;2）&lt;strong&gt;对话状态识别&lt;/strong&gt;：对话状态与对话的时序及对话行为相关联，在t时刻的对话行为序列即为t时刻的对话状态。因此，对话状态的转移就由前一时刻的对话状态与当前时刻的对话行为决定。&lt;/p&gt;
+
+&lt;p&gt;3）&lt;strong&gt;对话策略学习&lt;/strong&gt;：通常是通过离线的方式，从人-人对话数据中学习对话的行为、状态、流行度等信息，从而作为指导人-机对话的策略。这里流行度通常是指特定模式在语料库中的频度。&lt;/p&gt;
+
+&lt;p&gt;4）&lt;strong&gt;对话奖励&lt;/strong&gt;：对话奖励是对话系统的中间级评价机制，但会影响对话系统的整体评价。常见的对话奖励有槽填充效率和回复流行度等。&lt;/p&gt;
+
+&lt;h2 id=&#34;自然语言生成:6ec0b5ab1b904817be52eac14e5c3565&#34;&gt;自然语言生成&lt;/h2&gt;
+
+&lt;p&gt;自然语言生成通常根据对话管理部分产生的非语言信息，自动生成面向用户的自然语言反馈。近年来，在聊天机器人系统上的对话生成主要涉及&lt;strong&gt;检索式和生成式&lt;/strong&gt;两类技术。&lt;/p&gt;
+
+&lt;p&gt;1）&lt;strong&gt;检索式对话生成技术&lt;/strong&gt;：检索式的代表性技术是在已有的人人对话语料库中通过排序学习技术和深度匹配技术找到适合当前输入的最佳回复。这种方法的局限是仅能以固定的语言模式进行回复，无法实现词语的多样性组合。&lt;/p&gt;
+
+&lt;p&gt;2）&lt;strong&gt;生成式对话生成技术&lt;/strong&gt;：生成式的代表性技术则是从已有的人人对话中学习语言的组合模式，是通过一种类似机器翻译中常用的“编码-解码”的过程去逐字或逐词地生成一个回复，这种回复有可能是从未在语料库中出现的、由聊天机器人自己“创造”出来的句子。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;聊天机器人研究存在的挑战&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;聊天机器人的研究存在的挑战包括：对话上下文建模、对话过程中的知识表示、对话策略学习、聊天机器人智能程度的评价等。&lt;/p&gt;
+
+&lt;p&gt;1）&lt;strong&gt;对话上下文建模&lt;/strong&gt;：聊天是一个有特定背景的连续交互过程，在这一过程中经常出现上下文省略和指代的情况。一句话的意义有时要结合对话上下文或者相关的背景才能确定，而现有的自然语言理解主要基于上下文无关假设，因此对话上下文的建模成为聊天机器人系统的主要挑战之一。&lt;/p&gt;
+
+&lt;p&gt;2）&lt;strong&gt;对话过程中的知识表示&lt;/strong&gt;：知识表示一直就是人工智能领域的重要课题，也是聊天机器人提供信息服务的基础。聊天机器人相关的领域任务可能有复杂的组成，牵涉很多的因素，只有了解这些因素的关系和相关的含义，才能与用户做到真正意义上的交流。&lt;/p&gt;
+
+&lt;p&gt;3）&lt;strong&gt;对话策略学习&lt;/strong&gt;：对话策略涉及很多方面，其中最主要的是对话的主导方式。对话主导方式可以分为用户主导、系统主导和混合主导三种方式。在当前的对话管理研究中，系统应答的目标是自然、友好、积极，在不会发生问题的情况下，让用户尽可能自主，实现对话的混合主导。&lt;/p&gt;
+
+&lt;p&gt;4）&lt;strong&gt;聊天机器人智能程度的评价&lt;/strong&gt;：目前聊天机器人智能程度的评价也是一项挑战。虽然可以采用一些通用的客观评价标准，如回答正确率、任务完成率、对话回合数、对话时间、系统平均响应时间、错误信息率等，对聊天机器人进行评价，评价的基本单元是单轮对话。但是，由于人机对话过程是一个连续的过程，而对不同聊天机器人系统的连续对话的评价仅能保证首句输入的一致性，当对话展开后，不同系统的回复不尽相同，因此不能简单地将连续对话切分成单轮对话去评价，于是设计合理的人工主观评价也许能够成为客观评价标准之外，对聊天机器人系统智能程度评价的重要指标。&lt;/p&gt;
+
+&lt;h1 id=&#34;2-聊天机器人的现有解决方案:6ec0b5ab1b904817be52eac14e5c3565&#34;&gt;2、聊天机器人的现有解决方案&lt;/h1&gt;
+
+&lt;p&gt;闲聊机器人问题的组成：&lt;/p&gt;
+
+&lt;p&gt;2.1、答案生成（选择）&lt;/p&gt;
+
+&lt;p&gt;Solution1: 基于规则的聊天机器人：&lt;/p&gt;
+
+&lt;p&gt;通过人工设定对话场景，并对每个场景写一些针对性的对话模板或规则库，所有问题的答案均是根据已建立的规则库进行规则匹配和推理得到,具有准确性高、知识获取便捷的特点。&lt;/p&gt;
+
+&lt;p&gt;优点：精准性高&lt;/p&gt;
+
+&lt;p&gt;缺点：需要大量人工工作，而且可扩展性差；&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%9B%BE.png&#34; alt=&#34;一个基于规则的聊天机器人的系统结构图&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Solution2: 基于检索的聊天机器人：&lt;/p&gt;
+
+&lt;p&gt;1、预先存储好对话库并建立索引&lt;/p&gt;
+
+&lt;p&gt;2、根据用户问句，在对话库中进行模糊匹配找到最合适的应答内容&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;%E5%9F%BA%E4%BA%8E%E6%A3%80%E7%B4%A2%E7%9A%84%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA.png&#34; alt=&#34;基于检索的微信聊天机器人&#34; /&gt;
+Solution3: 基于深度学习的聊天机器人&lt;/p&gt;
+
+&lt;p&gt;根据context来生成对话，如seq2seq+attention框架&lt;/p&gt;
+
+&lt;p&gt;1、Encoder：压缩表示当前用户问题与上下文信息
+ 2、Decoder：解码出答案
+&lt;img src=&#34;%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E7%B3%BB%E7%BB%9F.png&#34; alt=&#34;一个基于深度学习的聊天机器人的系统&#34; /&gt;
+3、面临的问题：&lt;/p&gt;
+
+&lt;p&gt;聊天机器人的评价标准&lt;/p&gt;
+
+&lt;p&gt;缺乏标准化的大规模训练数据&lt;/p&gt;
+
+&lt;p&gt;“安全回答”（Safe Response）问题：聊天机器人都用少数非常常见的句子进行应答&lt;/p&gt;
+
+&lt;p&gt;个性信息一致性问题&lt;/p&gt;
+
+&lt;p&gt;2.2、对话状态跟踪&lt;/p&gt;
+
+&lt;p&gt;理解或者捕捉user intention或者goal&lt;/p&gt;
+
+&lt;p&gt;2.3、用户建模&lt;/p&gt;
+
+&lt;p&gt;3.1对于复杂、细致的业务，需要对用户建模，相同的问题，bot给每个人的response是不同的。&lt;/p&gt;
+
+&lt;p&gt;3.2用户建模需要涉及的不仅仅是简单的用户基本信息和用户的一些显式反馈信息，而更重要的是用户的history conversations，这些隐式的反馈信息。&lt;/p&gt;
+
+&lt;p&gt;3.3 对user进行建模，就是做一个个性化的bot，生成的每一个response都有这个user鲜明的特点&lt;/p&gt;
+
+&lt;p&gt;2.4 闲聊机器人的性能评价&lt;/p&gt;
+
+&lt;p&gt;采用机器翻译中的bleu值，  对话的平均轮数，  人工进行评价。其中设计评价机制评分，进行人工评价更有说服力。&lt;/p&gt;
+
+&lt;p&gt;Reference:&lt;/p&gt;
+
+&lt;p&gt;[1] &lt;a href=&#34;http://www.sohu.com/a/110529212_119709&#34;&gt;http://www.sohu.com/a/110529212_119709&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[2] &lt;a href=&#34;http://blog.csdn.net/malefactor/article/details/51901115&#34;&gt;http://blog.csdn.net/malefactor/article/details/51901115&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[3] 王磊,魏勇,邸建勋,杨小琳. 本体聊天机器人的设计与应用[J]. 自动化与信息工程,2016,37(04):13-18&lt;/p&gt;
+
+&lt;h1 id=&#34;3-微软小冰的例子:6ec0b5ab1b904817be52eac14e5c3565&#34;&gt;3、微软小冰的例子&lt;/h1&gt;
+
+&lt;p&gt;参考（&lt;a href=&#34;http://www.ccf.org.cn/sites/weixin/chatbot.pdf&#34;&gt;http://www.ccf.org.cn/sites/weixin/chatbot.pdf&lt;/a&gt;）&lt;/p&gt;
+
+&lt;p&gt;小冰作为闲聊机器人，它的聊天引擎主要有：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;底层&lt;/strong&gt;：数据层，包含普通数据，抽取的聊天知识&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;中间层&lt;/strong&gt;：引擎与技术，比如闲聊引擎，问答引擎，Task-completion引擎，基于搜索和基于生成的技术。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;上层&lt;/strong&gt;：用户画像、上下文场景，通过聊天建立用户画像和上下文场景。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;闲聊引擎&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;1）个性化聊天：根据用户不同作不同倾向性的回复，根据用户画像选最优的回复&lt;/p&gt;
+
+&lt;p&gt;2）深度聊天：即针对某些重点话题整理聊天知识，使得聊天内容更加深入和丰富&lt;/p&gt;
+
+&lt;p&gt;3）基于图片的聊天：根据对图片的识别和理解，形成聊天&lt;/p&gt;
+
+&lt;p&gt;4）基于图片标题的聊天：根据图片的内容和对图片标题的描述，生成评论性的聊天&lt;/p&gt;
+
+&lt;h1 id=&#34;4-实现聊天机器人的技术:6ec0b5ab1b904817be52eac14e5c3565&#34;&gt;4、实现聊天机器人的技术&lt;/h1&gt;
+
+&lt;p&gt;搭建一个简单的聊天机器人demo需要的技术&lt;/p&gt;
+
+&lt;h2 id=&#34;4-1-数据集:6ec0b5ab1b904817be52eac14e5c3565&#34;&gt;4.1 数据集&lt;/h2&gt;
+
+&lt;p&gt;对话系统的数据集(参考：&lt;a href=&#34;https://github.com/candlewill/Dialog_Corpus&#34;&gt;https://github.com/candlewill/Dialog_Corpus&lt;/a&gt;)：&lt;/p&gt;
+
+&lt;p&gt;1) &lt;a href=&#34;https://github.com/rustch3n/dgk_lost_conv&#34;&gt;dgk_shooter_min.conv.zip&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;中文电影对白语料，噪音比较大，许多对白问答关系没有对应好&lt;/p&gt;
+
+&lt;p&gt;2) &lt;a href=&#34;https://github.com/kite1988/nus-sms-corpus&#34;&gt;The NUS SMS Corpus&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;包含中文和英文短信息语料，据说是世界最大公开的短消息语料&lt;/p&gt;
+
+&lt;p&gt;3) &lt;a href=&#34;https://github.com/gunthercox/chatterbot-corpus/tree/master/chatterbot_corpus/data&#34;&gt;ChatterBot中文基本聊天语料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ChatterBot聊天引擎提供的一点基本中文聊天语料，量很少，但质量比较高&lt;/p&gt;
+
+&lt;p&gt;4) &lt;a href=&#34;https://github.com/karthikncode/nlp-datasets&#34;&gt;Datasets for Natural Language Processing&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这是他人收集的自然语言处理相关数据集，主要包含Question Answering，Dialogue Systems， Goal-Oriented Dialogue Systems三部分，都是英文文本。可以使用机器翻译为中文，供中文对话使用&lt;/p&gt;
+
+&lt;p&gt;5) &lt;a href=&#34;https://github.com/rustch3n/dgk_lost_conv/tree/master/results&#34;&gt;小黄鸡&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;据传这就是小黄鸡的语料：xiaohuangji50w_fenciA.conv.zip （已分词） 和 xiaohuangji50w_nofenci.conv.zip （未分词）&lt;/p&gt;
+
+&lt;p&gt;6) &lt;a href=&#34;https://github.com/Samurais/egret-wenda-corpus&#34;&gt;白鹭时代中文问答语料&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;由白鹭时代官方论坛问答板块10,000+ 问题中，选择被标注了“最佳答案”的纪录汇总而成。人工review raw data，给每一个问题，一个可以接受的答案。目前，语料库只包含2907个问答。(备份)&lt;/p&gt;
+
+&lt;p&gt;7) &lt;a href=&#34;https://github.com/Marsan-Ma/chat_corpus&#34;&gt;Chat corpus repository&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;chat corpus collection from various open sources&lt;/p&gt;
+
+&lt;p&gt;包括：开放字幕、英文电影字幕、中文歌词、英文推文&lt;/p&gt;
+
+&lt;p&gt;8) &lt;a href=&#34;https://github.com/Samurais/insuranceqa-corpus-zh&#34;&gt;保险行业QA语料库&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;通过翻译 insuranceQA产生的数据集。train_data含有问题12,889条，数据 141779条，正例：负例 = 1:10； test_data含有问题2,000条，数据 22000条，正例：负例 = 1:10；valid_data含有问题2,000条，数据 22000条，正例：负例 = 1:10&lt;/p&gt;
+
+&lt;h2 id=&#34;4-2-基于规则与检索的聊天机器人:6ec0b5ab1b904817be52eac14e5c3565&#34;&gt;4.2 基于规则与检索的聊天机器人&lt;/h2&gt;
+
+&lt;p&gt;利用开源的搜索引擎做检索(参考：&lt;a href=&#34;https://www.zhihu.com/question/19583321&#34;&gt;https://www.zhihu.com/question/19583321&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Lucene及其变种&lt;/p&gt;
+
+&lt;p&gt;· Lucene &lt;a href=&#34;https://link.zhihu.com/?target=http%3A//lucene.apache.org/&#34;&gt;http://lucene.apache.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;· Solr   &lt;a href=&#34;http://lucene.apache.org/solr/&#34;&gt;http://lucene.apache.org/solr/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;· Elasticsearch &lt;a href=&#34;https://link.zhihu.com/?target=http%3A//www.elasticsearch.org/&#34;&gt;http://www.elasticsearch.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Zettair &lt;a href=&#34;https://link.zhihu.com/?target=http%3A//www.seg.rmit.edu.au/zettair/&#34;&gt;http://www.seg.rmit.edu.au/zettair/&lt;/a&gt; Indri &lt;a href=&#34;https://link.zhihu.com/?target=http%3A//www.lemurproject.org/indri/&#34;&gt;http://www.lemurproject.org/indri/&lt;/a&gt; Terrier &lt;a href=&#34;https://link.zhihu.com/?target=http%3A//terrier.org/&#34;&gt;http://terrier.org/&lt;/a&gt; Galago &lt;a href=&#34;https://link.zhihu.com/?target=http%3A//www.galagosearch.org/&#34;&gt;http://www.galagosearch.org/&lt;/a&gt; Zebra &lt;a href=&#34;https://link.zhihu.com/?target=https%3A//www.indexdata.com/zebra&#34;&gt;https://www.indexdata.com/zebra&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Sphinx &lt;a href=&#34;http://sphinxsearch.com/&#34;&gt;http://sphinxsearch.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;4-3-基于生成式的聊天机器人:6ec0b5ab1b904817be52eac14e5c3565&#34;&gt;4.3 基于生成式的聊天机器人&lt;/h2&gt;
+
+&lt;p&gt;基于Seq2Seq模型的回复生成：&lt;/p&gt;
+
+&lt;p&gt;传统的seq2seq模型以及针对聊天机器人的各种变种模型&lt;/p&gt;
+
+&lt;p&gt;(深度学习框架Theano,Tensorflow,Torch等)&lt;/p&gt;
 </description>
     </item>
     
