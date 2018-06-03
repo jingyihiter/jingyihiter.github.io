@@ -6,8 +6,98 @@
     <description>Recent content in Posts on JingYi-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Dec 2017 21:40:07 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 03 Jun 2018 18:39:16 +0800</lastBuildDate>
     <atom:link href="https://jingyihiter.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>利用微信及时抢占linux服务器资源(干货)</title>
+      <link>https://jingyihiter.github.io/2018/06/03/%E5%88%A9%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%8A%E6%97%B6%E6%8A%A2%E5%8D%A0linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B5%84%E6%BA%90%E5%B9%B2%E8%B4%A7</link>
+      <pubDate>Sun, 03 Jun 2018 18:39:16 +0800</pubDate>
+      
+      <guid>https://jingyihiter.github.io/2018/06/03/%E5%88%A9%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%8A%E6%97%B6%E6%8A%A2%E5%8D%A0linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B5%84%E6%BA%90%E5%B9%B2%E8%B4%A7</guid>
+      <description>
+
+&lt;h1 id=&#34;利用微信及时抢占linux服务器资源-干货:f8c2ab16d5de3e9931f1c017722b837c&#34;&gt;利用微信及时抢占linux服务器资源(干货)&lt;/h1&gt;
+
+&lt;p&gt;在linux服务器多用户的情况下，抢占资源比较严重。博主就是在师兄师姐忙着跑毕设实验的空闲时间里去跑自己的实验(夹缝中求生存啊(╥╯^╰╥))。但是这个空隙时间如何能及时的抓住呢？自己就想写一个脚本，来监测资源占用情况，然后来及时通知自己。&lt;/p&gt;
+
+&lt;p&gt;##环境
+- &lt;strong&gt;python（2或3）&lt;/strong&gt;
+- &lt;strong&gt;wxpy&lt;/strong&gt;
+  安装直接用&lt;strong&gt;pip install wxpy&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;代码:f8c2ab16d5de3e9931f1c017722b837c&#34;&gt;代码&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import os
+from wxpy import *
+import time 
+import datetime
+bot = Bot(cache_path=&amp;quot;wxpy/wxpy.pkl&amp;quot;,console_qr=2, qr_path=&amp;quot;wxpy/qr.png&amp;quot;)
+userlist=[&#39;username1&#39;,&amp;quot;username2&amp;quot;,&amp;quot;username3&amp;quot;] #不包括自己的用户名，如果是监测自己的程序，这里换成仅仅包含自己用户名也可
+
+def psloginfo():
+    pslog = os.popen(&amp;quot;ps -eo user,size,time,cmd&amp;quot;).read()
+    pslogs = pslog.split(&amp;quot;\n&amp;quot;)
+    title = pslogs[0]
+    infolist = pslogs[1:]
+    psinfo = []
+    for info in infolist:
+        inf = info.split(&amp;quot; &amp;quot;)
+        inf = [s for s in inf if s!=&#39;&#39;]
+        if len(inf)&amp;gt;=4 and inf[0] in userlist and int(inf[1])&amp;gt;102400: # 大于百兆程序进程
+            psinfo.append(&amp;quot; &amp;quot;.join(inf))
+    flag = 0
+    if len(psinfo)&amp;gt;0:
+        flag = 1
+    title = &amp;quot;当前机器占用情况 \n 用户名 内存 时间 命令&amp;quot;
+    psinfolog = title+&amp;quot;\n&amp;quot;+&amp;quot;\n&amp;quot;.join(psinfo)
+    return psinfolog,flag
+
+def main():
+    # 设置区
+    # myself = bot.self  # 用自己的微信号给自己发消息
+    bot.enable_puid(&#39;wxpy/wxpy_puid.pkl&#39;)
+    me = bot.friends().search(&#39;律己&#39;)[0] # 通过微信小号给自己发消息
+    start_time, end_time = 1,9 # 免打扰时间1-9点
+    while True:
+        @bot.register(me, TEXT)
+        def auto_friends_msg(msg):
+            if msg.text ==&amp;quot;top&amp;quot;:
+                return psloginfo()[0]
+            else:
+                return &amp;quot;你好，程序监控机器人为你服务!\n 回复命令:\n top -查看当前机器占用情况\n&amp;quot;
+
+        now = datetime.datetime.now()
+        if start_time &amp;gt; now.hour and now.hour &amp;gt; end_time: # 休息时间
+            _,flag = psloginfo()
+            if not flag:
+                # myself.bot.file_helper.send(&amp;quot;有空机器，可以跑程序啦！&amp;quot;)
+                me.send(&amp;quot;有空机器，可以跑程序啦！&amp;quot;)
+            time.sleep(60*30)
+        time.sleep(30)
+
+if __name__==&amp;quot;__main__&amp;quot;:
+    main()
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;##使用教程&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;代码放到你的linux服务器上，新建wxpy文件（用于缓存文件，二维码等）&lt;/li&gt;
+&lt;li&gt;将你需要监控的账号填到userlist中，在main中设置是由自己的微信号通过文件助手(file_helper)或你的小号给自己发消息.(建议用小号，wxpy是非腾讯官方，存在账号无法登陆微信网页版的风险)&lt;/li&gt;
+&lt;li&gt;用python 命令直接跑起来，就可以了。建议放到后台上跑，否则关闭了终端程序就断了。可以采用&lt;a href=&#34;http://man.linuxde.net/screen&#34;&gt;screen命令&lt;/a&gt;,&lt;strong&gt;screen -S wx&lt;/strong&gt;，screen的具体用法请查看&lt;a href=&#34;http://man.linuxde.net/screen&#34;&gt;博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;##效果图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://img-blog.csdn.net/20180603181757615?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzIwMjgwMDYx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70&#34;,width=&#34;50%&#34;alt=&#34;通过发送top来返回服务器占用情况&#34;/&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>survey_chatbot</title>

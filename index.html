@@ -170,12 +170,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        11
+        12
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          17
+          18
         
         <span>
             Tags
@@ -253,6 +253,86 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+            </a>
+
+            <header class="article-header">
+    <a href="https://jingyihiter.github.io/2018/06/03/%E5%88%A9%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%8A%E6%97%B6%E6%8A%A2%E5%8D%A0linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B5%84%E6%BA%90%E5%B9%B2%E8%B4%A7">
+    <h1 class="article-title" itemprop="name">
+        利用微信及时抢占linux服务器资源(干货)
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2018-06-03 18:39:16 &#43;0800 CST" itemprop="datePublished">2018-06-03</time>
+            &middot;
+            170
+            words
+            &middot;
+            1
+            minute read
+        </div>
+
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                <a class="article-category-link" href="https://jingyihiter.github.io/categories/linux">linux</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                <a class="article-category-link" href="https://jingyihiter.github.io/tags/linux">linux</a>
+                &middot;
+                
+                <a class="article-category-link" href="https://jingyihiter.github.io/tags/wechat">wechat</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    利用微信及时抢占linux服务器资源(干货) 在linux服务器多用户的情况下，抢占资源比较严重。博主就是在师兄师姐忙着跑毕设实验的空闲时间里去跑自己的实验(夹缝中求生存啊(╥╯^╰╥))。但是这个空隙时间如何能及时的抓住呢？自己就想写一个脚本，来监测资源占用情况，然后来及时通知自己。 ##环境 - python（2或3） - wxpy 安装直接用pip install wxpy 代码 import os from wxpy import * import time import datetime bot = Bot(cache_path=&quot;wxpy/wxpy.pkl&quot;,console_qr=2, qr_path=&quot;wxpy/qr.png&quot;) userlist=[&lsquo;username1&rsquo;,&quot;username2&quot;,&quot;username3&quot;] #不包括自己的用户名，如果是监测自己的程序，这里换成仅仅包含自己用户名也可 def psloginfo(): pslog = os.popen(&quot;ps -eo user,size,time,cmd&quot;).read() pslogs = pslog.split(&quot;\n&quot;) title = pslogs[0] infolist = pslogs[1:] psinfo = [] for info in infolist: inf = info.split(&quot; &quot;) inf = [s for s in inf if s!=&ldquo;] if len(inf)&gt;=4 and inf[0] in userlist and
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="https://jingyihiter.github.io/2018/06/03/%E5%88%A9%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%8A%E6%97%B6%E6%8A%A2%E5%8D%A0linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B5%84%E6%BA%90%E5%B9%B2%E8%B4%A7">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="https://jingyihiter.github.io/2018/06/03/%E5%88%A9%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%8A%E6%97%B6%E6%8A%A2%E5%8D%A0linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B5%84%E6%BA%90%E5%B9%B2%E8%B4%A7" data-id="f8c2ab16d5de3e9931f1c017722b837c" class="article-share-link">
+        Share
+    </a>
+    
+    <a href="https://jingyihiter.github.io/2018/06/03/%E5%88%A9%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%8A%E6%97%B6%E6%8A%A2%E5%8D%A0linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B5%84%E6%BA%90%E5%B9%B2%E8%B4%A7/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -986,67 +1066,6 @@
         </div>
     </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            
-            </a>
-
-            <header class="article-header">
-    <a href="https://jingyihiter.github.io/2016/06/30/about-me">
-    <h1 class="article-title" itemprop="name">
-        About-me
-    </h1>
-    </a>
-    <div class="article-meta">
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-06-30 23:30:25 &#43;0800 CST" itemprop="datePublished">2016-06-30</time>
-            &middot;
-            11
-            words
-            &middot;
-            1
-            minute read
-        </div>
-
-        
-        
-            
-            
-        
-
-        
-            
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="https://jingyihiter.github.io/2016/06/30/about-me">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="https://jingyihiter.github.io/2016/06/30/about-me" data-id="6083a88ee3411b0d17ce02d738f69d47" class="article-share-link">
-        Share
-    </a>
-    
-    <a href="https://jingyihiter.github.io/2016/06/30/about-me/#disqus_thread" class="article-comment-link">
-        Comments
-    </a>
-    
-</footer>
-
-        </div>
-    </article>
-    
 
     <nav id="page-nav">
 
@@ -1070,6 +1089,31 @@
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jingyihiter.github.io/2018/06/03/%E5%88%A9%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%8A%E6%97%B6%E6%8A%A2%E5%8D%A0linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B5%84%E6%BA%90%E5%B9%B2%E8%B4%A7" class="thumbnail">
+                    
+                        <span style="background-image:url(https://jingyihiter.github.io/)" alt="JingYi-Blog" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        <a class="article-category-link" href="https://jingyihiter.github.io/categories/linux">
+                        linux
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jingyihiter.github.io/2018/06/03/%E5%88%A9%E7%94%A8%E5%BE%AE%E4%BF%A1%E5%8F%8A%E6%97%B6%E6%8A%A2%E5%8D%A0linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B5%84%E6%BA%90%E5%B9%B2%E8%B4%A7" class="title">利用微信及时抢占linux服务器资源(干货)</a></p>
+                    <p class="item-date">
+                        <time datetime="2018-06-03 18:39:16 &#43;0800 CST" itemprop="datePublished">2018-06-03</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1171,31 +1215,6 @@
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="https://jingyihiter.github.io/2017/03/29/kb-qa%E7%B3%BB%E7%BB%9Fpaper%E6%8E%A8%E8%8D%90" class="thumbnail">
-                    
-                        <span style="background-image:url(https://github.com/jingyihiter/jingyihiter.github.io/raw/master/css/images/xiaobing.jpg)" alt="JingYi-Blog" class="thumbnail-image"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        <a class="article-category-link" href="https://jingyihiter.github.io/categories/%e8%87%aa%e5%8a%a8%e9%97%ae%e7%ad%94%e7%b3%bb%e7%bb%9f">
-                        自动问答系统
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="https://jingyihiter.github.io/2017/03/29/kb-qa%E7%B3%BB%E7%BB%9Fpaper%E6%8E%A8%E8%8D%90" class="title">KB-QA系统paper推荐</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-03-29 20:43:29 &#43;0800 CST" itemprop="datePublished">2017-03-29</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -1220,7 +1239,7 @@
                 <a class="category-list-link" href="https://jingyihiter.github.io/categories/linux">
                     linux
                 </a>
-                <span class="category-list-count">1</span>
+                <span class="category-list-count">2</span>
             </li>
             
             <li class="category-list-item">
@@ -1306,7 +1325,7 @@
                 <a class="category-list-link" href="https://jingyihiter.github.io/tags/linux">
                     linux
                 </a>
-                <span class="category-list-count">1</span>
+                <span class="category-list-count">2</span>
             </li>
             
             <li class="category-list-item">
@@ -1326,6 +1345,13 @@
             <li class="category-list-item">
                 <a class="category-list-link" href="https://jingyihiter.github.io/tags/qa-system">
                     qa-system
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                <a class="category-list-link" href="https://jingyihiter.github.io/tags/wechat">
+                    wechat
                 </a>
                 <span class="category-list-count">1</span>
             </li>
@@ -1419,6 +1445,8 @@
         
         <a href="https://jingyihiter.github.io/tags/qa-system" style="font-size: 12px;">qa-system</a>
         
+        <a href="https://jingyihiter.github.io/tags/wechat" style="font-size: 12px;">wechat</a>
+        
         <a href="https://jingyihiter.github.io/tags/%e4%bb%a3%e7%90%86%e6%9c%8d%e5%8a%a1%e5%99%a8" style="font-size: 12px;">代理服务器</a>
         
         <a href="https://jingyihiter.github.io/tags/%e5%8f%8c%e7%b3%bb%e7%bb%9f" style="font-size: 12px;">双系统</a>
@@ -1450,7 +1478,7 @@
 <footer id="footer">
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017
+      &copy; 2018
       Powered by <a href="https://github.com/jingyihiter">JingYi</a>.  Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
     </div>
   </div>
